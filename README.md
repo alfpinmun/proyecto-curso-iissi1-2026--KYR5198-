@@ -4,7 +4,7 @@
 
 1. Pineda Muñoz, Alfonso
 2. Tejada González, Gonzalo
-3. Apellidos, Nombre
+3. León Ramos, Mario
 
 ## 1. Introducción al problema
 
