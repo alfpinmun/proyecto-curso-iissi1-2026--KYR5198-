@@ -2,10 +2,9 @@
 
 ## Miembros del grupo LX-XXX-X (sustituir)
 
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
+1. Pineda Muñoz, Alfonso
+2. Tejada González, Gonzalo
+3. Apellidos, Nombre
 
 ## 1. Introducción al problema
 
