@@ -10,6 +10,8 @@
 
 - Descripción del problema para poner en contexto el proyecto, incluyendo información sobre los clientes y usuarios, la situación actual, problemas, expectativas, etc. Se valorará la presencia de información multimedia (fotos, gráficos, documentos escaneados, etc.).
 
+- Nosotros somos una empresa de pizzas, la cual queremos que tenga 10 empleados por tienda teniendo 3 tiendas distintas donde se hacen pizzas, dentro de las tiendas tenemos a distintos empleados(repartidores, cocinero, etc..). Con respecto  los clientes necesitaremos saber a que son alérgicos para que si son alérgicos a algun ingrediente no puedan pedir según el tipo de pedido, dentro del pedido también estarán los ingredientes para que tengan relación con los clientes.
+
 ## 2. Glosario de términos
 
 - Términos específicos del dominio del problema, ordenados alfabéticamente. Se valorará la presencia de información multimedia.
