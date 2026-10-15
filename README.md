@@ -71,56 +71,53 @@ Por ultimo estarían los clientes que serían los que ordenan a la tienda lo que
 
 ### 4.1. Requisitos funcionales
 
-##### R.F.01. Consulta del catálogo de pizzas
-
-Como cliente quiero consultar las pizzas disponibles en el catálogo para conocer los productos que puedo solicitar.
 #### R.F.01. Gestión de usuarios
 
 Como administrador quiero gestionar los usuarios del sistema para controlar el acceso y la información de los distintos tipos de usuarios.
 
 #### R.F.02. Registro de clientes
 
-Como cliente quiero registrarme en el sistema proporcionando mi nombre, DNI y dirección para poder realizar pedidos.
+Como cliente quiero registrarme en el sistema proporcionando mi nombre, DNI y dirección (dirección exacta y código postal) para poder realizar pedidos en línea.
 
 #### R.F.03. Gestión de empleados
 
-Como administrador quiero registrar, modificar y eliminar empleados para mantener actualizada la plantilla de cada tienda.
+Como administrador quiero registrar, modificar y eliminar empleados (cocineros, repartidores y camareros) para mantener actualizada la plantilla de cada tienda.
 
 #### R.F.04. Gestión de tiendas
 
-Como administrador quiero gestionar las tiendas de la empresa indicando su ubicación y código postal para organizar el servicio de las distintas zonas.
+Como administrador quiero gestionar las tiendas de la empresa indicando su dirección exacta y código postal para organizar el servicio de las distintas zonas.
 
 #### R.F.05. Asignación automática de tiendas
 
-Como sistema quiero asignar automáticamente a cada cliente una tienda en función del código postal de su dirección para determinar qué establecimiento debe gestionar sus pedidos.
+Como sistema quiero asignar automáticamente a cada cliente la tienda cuyo código postal esté más cerca del código postal de su dirección para determinar qué establecimiento debe gestionar sus pedidos en línea.
 
-#### R.F.06. Realización de pedidos
+#### R.F.06. Realización de pedidos en línea
 
-Como cliente quiero realizar pedidos de pizzas para recibirlos en mi dirección a través de la tienda que me corresponde.
+Como cliente registrado quiero realizar pedidos de pizzas en línea para recibirlos en mi dirección a través de la tienda que me corresponde.
 
 #### R.F.07. Registro de pedidos
 
-Como sistema quiero almacenar el número identificador, la fecha, la hora, la fecha estimada de entrega, el estado y el precio total de cada pedido para mantener un registro de las operaciones realizadas.
+Como sistema quiero almacenar el número identificador, la fecha de realización, el tiempo total de entrega, la fecha real de entrega, el estado, el precio total y el tipo (en línea o en tienda) de cada pedido para mantener un registro de las operaciones realizadas.
 
 #### R.F.08. Consulta de pedidos
 
-Como cliente quiero consultar mis pedidos para conocer su información y estado.
+Como cliente quiero consultar mis pedidos en línea para conocer su información y estado.
 
 #### R.F.09. Actualización del estado de los pedidos
 
-Como empleado quiero actualizar el estado de los pedidos para mantener informada a la empresa sobre su preparación y entrega.
+Como empleado quiero actualizar el estado de los pedidos (en preparación, en reparto, entregado o no entregado) para mantener informada a la empresa sobre su preparación y entrega.
 
 #### R.F.10. Asignación de pedidos a tiendas
 
-Como sistema quiero asociar cada pedido a la tienda que corresponde al cliente para determinar qué establecimiento se encarga de prepararlo y entregarlo.
+Como sistema quiero asociar cada pedido en línea a la tienda que corresponde al cliente, y cada pedido en tienda a la tienda donde se registra, para determinar qué establecimiento se encarga de prepararlo y entregarlo.
 
 #### R.F.11. Consulta de pizzas
 
-Como cliente quiero consultar las pizzas disponibles y sus precios para elegir las que deseo incluir en mi pedido.
+Como cliente quiero consultar las pizzas del catálogo y sus precios según el tamaño para elegir las que deseo incluir en mi pedido.
 
 #### R.F.12. Gestión de precios
 
-Como administrador quiero establecer y modificar los precios base de las pizzas para mantener actualizada la oferta de la empresa.
+Como administrador quiero establecer y modificar los precios base de las pizzas para cada tamaño, conservando el precio anterior cuando se modifique, para mantener actualizada la oferta de la empresa.
 
 #### R.F.13. Cálculo del precio del pedido
 
@@ -130,27 +127,25 @@ Como cliente quiero conocer el precio total de mi pedido antes de confirmarlo pa
 
 Como administrador quiero gestionar los ingredientes utilizados en la elaboración de las pizzas para mantener actualizada la información de los productos disponibles.
 
-#### R.F.15. Registro de compras a proveedores
+#### R.F.15. Registro de pedidos en tienda
 
-Como administrador quiero registrar las compras de ingredientes realizadas a proveedores para llevar un control de los aprovisionamientos de la empresa.
-
-### Requisitos funcionales opcionales
+Como camarero quiero registrar los pedidos de los clientes que consumen en la tienda física, identificándolos únicamente por su número de pedido, para atender a los clientes sin necesidad de que se registren.
 
 #### R.F.16. Clasificación de empleados
 
-Como administrador quiero clasificar a los empleados según su función, distinguiendo entre cocineros y repartidores, para organizar las tareas de cada tienda.
+Como administrador quiero clasificar a los empleados según su función, distinguiendo entre cocineros, repartidores y camareros, y asignar cada uno a una única tienda, para organizar las tareas de cada tienda.
 
 #### R.F.17. Selección del tamaño de las pizzas
 
 Como cliente quiero elegir entre pizzas pequeñas, medianas y grandes para adaptar mi pedido a mis preferencias.
 
-#### R.F.18. Personalización de pizzas
+#### R.F.18. Eliminación de ingredientes por alergias
 
-Como cliente quiero añadir o eliminar ingredientes de las pizzas para personalizar mi pedido según mis preferencias.
+Como cliente quiero eliminar de una pizza del catálogo los ingredientes a los que soy alérgico para poder consumirla de forma segura.
 
 #### R.F.19. Gestión de suscripciones
 
-Como administrador quiero gestionar las suscripciones de los clientes para identificar a aquellos que disponen de este servicio.
+Como administrador quiero gestionar las suscripciones de los clientes, teniendo en cuenta que un cliente solo puede tener una activa, para identificar a aquellos que disponen de este servicio.
 
 #### R.F.20. Priorización de pedidos de clientes suscritos
 
