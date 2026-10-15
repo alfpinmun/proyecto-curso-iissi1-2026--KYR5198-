@@ -8,12 +8,17 @@
 
 ## 1. Introducción al problema
 
-- Somos una empresa de pizzerías a domicilio la cual tiene diferentes tiendas asignadas a una ubicación con un código postal. Cada tienda tiene una serie de empleados. Hay 3 tipos de usuarios: admin, cliente y empleado. 
-(Hay diferentes tipos de empleados: cocinero y repartidor).
-Los clientes deben proporcionar su nombre, DNI y dirección para poder realizar pedidos. El pedido contiene varios atributos: número, tiempo, fecha, fechaEntrega, estado, precio. El estado puede ser entregado o no entregado.
-"Los clientes pueden pedir pizzas, y las hay de 3 tamaños: pequeña, mediana, grande. Los clientes podrán personalizar las pizzas al gusto añadiendo o eliminando ingredientes." Éstas pizzas también tienen un precio base, aunque puntualmente puede ser modificado.
-Además, los clientes podrán contar con una suscripción que le otorgará prioridad sobre los no suscritos a la hora de la entrega y la elaboración de sus pizzas.
-El admin deberá contactar con la línea para comprar al por mayor los ingredientes necesarios para elaborar las pizzas.
+Somos una empresa de pizzerías con servicio a domicilio y consumo en tienda, la cual tiene diferentes tiendas, cada una asignada a una ubicación con un código postal distinto. La dirección de cada tienda está formada por su dirección exacta y su código postal. Cada tienda cuenta con una plantilla de 10 personas: 3 repartidores, 3 cocineros, 3 camareros y 1 admin, que gestiona y dirige la tienda. Cada empleado y cada admin pertenecen a una única tienda.
+
+Hay 3 tipos de usuarios: admin, cliente y empleado. (Hay diferentes tipos de empleados: cocinero, repartidor y camarero).
+
+Para realizar pedidos en línea es necesario registrarse como cliente; para consumir en la tienda física no es necesario. Los clientes deben proporcionar su nombre, DNI y dirección (dirección exacta y código postal) para poder realizar pedidos en línea. A través de la ubicación del cliente, se le asociará la tienda cuyo código postal se encuentre más cerca de su ubicación. Los pedidos de la tienda física no se asocian a ningún cliente y se identifican únicamente por su número de pedido, ya que no se dispone de más información; son registrados por los camareros.
+
+El pedido contiene varios atributos: número, tiempo (tiempo total de entrega), fecha (fecha en la que se realiza el pedido), fechaEntrega (fecha real de entrega), estado, precio y tipo (en línea o en tienda). El estado puede ser en preparación, en reparto, entregado o no entregado (si surge cualquier inconveniente). Los pedidos en tienda no tienen cliente, repartidor ni fecha de entrega, y no pasan por el estado en reparto. De cada pedido se registra el cocinero que lo prepara y, en los pedidos en línea, el repartidor que lo entrega.
+
+Los clientes pueden pedir pizzas del catálogo de la empresa, y las hay de 3 tamaños: pequeña, mediana y grande. Cada pizza tiene un precio base distinto para cada tamaño, que puede ser modificado puntualmente; cuando esto ocurre, se guarda el precio anterior, ya que se supone un cambio temporal y el precio base volverá a su valor. Los clientes podrán eliminar de una pizza del catálogo los ingredientes a los que sean alérgicos; no se registran las alergias del cliente.
+
+Además, los clientes podrán contar con una suscripción que le otorgará prioridad sobre los no suscritos a la hora de la entrega y la elaboración de sus pizzas. Solo existe un tipo de suscripción y un cliente solo puede tener una activa.
 
 ## 2. Glosario de términos
 
