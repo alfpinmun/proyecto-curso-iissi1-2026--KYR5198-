@@ -69,6 +69,88 @@ Por ultimo estarían los clientes que serían los que ordenan a la tienda lo que
 ##### R.F.01. Consulta del catálogo de pizzas
 
 Como cliente quiero consultar las pizzas disponibles en el catálogo para conocer los productos que puedo solicitar.
+#### R.F.01. Gestión de usuarios
+
+Como administrador quiero gestionar los usuarios del sistema para controlar el acceso y la información de los distintos tipos de usuarios.
+
+#### R.F.02. Registro de clientes
+
+Como cliente quiero registrarme en el sistema proporcionando mi nombre, DNI y dirección para poder realizar pedidos.
+
+#### R.F.03. Gestión de empleados
+
+Como administrador quiero registrar, modificar y eliminar empleados para mantener actualizada la plantilla de cada tienda.
+
+#### R.F.04. Gestión de tiendas
+
+Como administrador quiero gestionar las tiendas de la empresa indicando su ubicación y código postal para organizar el servicio de las distintas zonas.
+
+#### R.F.05. Asignación automática de tiendas
+
+Como sistema quiero asignar automáticamente a cada cliente una tienda en función del código postal de su dirección para determinar qué establecimiento debe gestionar sus pedidos.
+
+#### R.F.06. Realización de pedidos
+
+Como cliente quiero realizar pedidos de pizzas para recibirlos en mi dirección a través de la tienda que me corresponde.
+
+#### R.F.07. Registro de pedidos
+
+Como sistema quiero almacenar el número identificador, la fecha, la hora, la fecha estimada de entrega, el estado y el precio total de cada pedido para mantener un registro de las operaciones realizadas.
+
+#### R.F.08. Consulta de pedidos
+
+Como cliente quiero consultar mis pedidos para conocer su información y estado.
+
+#### R.F.09. Actualización del estado de los pedidos
+
+Como empleado quiero actualizar el estado de los pedidos para mantener informada a la empresa sobre su preparación y entrega.
+
+#### R.F.10. Asignación de pedidos a tiendas
+
+Como sistema quiero asociar cada pedido a la tienda que corresponde al cliente para determinar qué establecimiento se encarga de prepararlo y entregarlo.
+
+#### R.F.11. Consulta de pizzas
+
+Como cliente quiero consultar las pizzas disponibles y sus precios para elegir las que deseo incluir en mi pedido.
+
+#### R.F.12. Gestión de precios
+
+Como administrador quiero establecer y modificar los precios base de las pizzas para mantener actualizada la oferta de la empresa.
+
+#### R.F.13. Cálculo del precio del pedido
+
+Como cliente quiero conocer el precio total de mi pedido antes de confirmarlo para saber cuánto debo pagar.
+
+#### R.F.14. Gestión de ingredientes
+
+Como administrador quiero gestionar los ingredientes utilizados en la elaboración de las pizzas para mantener actualizada la información de los productos disponibles.
+
+#### R.F.15. Registro de compras a proveedores
+
+Como administrador quiero registrar las compras de ingredientes realizadas a proveedores para llevar un control de los aprovisionamientos de la empresa.
+
+### Requisitos funcionales opcionales
+
+#### R.F.16. Clasificación de empleados
+
+Como administrador quiero clasificar a los empleados según su función, distinguiendo entre cocineros y repartidores, para organizar las tareas de cada tienda.
+
+#### R.F.17. Selección del tamaño de las pizzas
+
+Como cliente quiero elegir entre pizzas pequeñas, medianas y grandes para adaptar mi pedido a mis preferencias.
+
+#### R.F.18. Personalización de pizzas
+
+Como cliente quiero añadir o eliminar ingredientes de las pizzas para personalizar mi pedido según mis preferencias.
+
+#### R.F.19. Gestión de suscripciones
+
+Como administrador quiero gestionar las suscripciones de los clientes para identificar a aquellos que disponen de este servicio.
+
+#### R.F.20. Priorización de pedidos de clientes suscritos
+
+Como sistema quiero priorizar los pedidos de los clientes con una suscripción activa durante la elaboración y la entrega para ofrecerles las ventajas asociadas a su suscripción.
+
 
 **Pruebas de aceptación**
 
@@ -372,7 +454,7 @@ Un usuario tan solo puede tener una suscripción activa ya que puedes estar o Su
 Un empleado solo podría ser jefe en una tienda, y la tienda solo puede tener un jefe asignado.
 Así mismo los empleados(cocinero, repartidor y camarero), solo podrían tener un jefe
 
-##### R.N.05. Empleados > Tienda
+##### R.N.05. Empleados -> Tienda
 En cada tienda es obligatorio e independiente de las otras tiendas tener: 1 jefe de tienda, 3 repartidores, 3 cocineros y 3 camareros.
 
 ##### R.N.06. Una categoría 
