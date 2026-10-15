@@ -8,8 +8,6 @@
 
 ## 1. Introducción al problema
 
-- Descripción del problema para poner en contexto el proyecto, incluyendo información sobre los clientes y usuarios, la situación actual, problemas, expectativas, etc. Se valorará la presencia de información multimedia (fotos, gráficos, documentos escaneados, etc.).
-
 - Somos una empresa de pizzerías a domicilio la cual tiene diferentes tiendas asignadas a una ubicación con un código postal. Cada tienda tiene una serie de empleados. Hay 3 tipos de usuarios: admin, cliente y empleado. 
 (Hay diferentes tipos de empleados: cocinero y repartidor).
 Los clientes deben proporcionar su nombre, DNI y dirección para poder realizar pedidos. El pedido contiene varios atributos: número, tiempo, fecha, fechaEntrega, estado, precio. El estado puede ser entregado o no entregado.
