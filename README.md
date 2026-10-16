@@ -27,25 +27,25 @@ Además, los clientes podrán contar con una suscripción que le otorgará prior
 
 A continuación se definen, por orden alfabético, los principales términos relacionados con el sistema de información de una empresa de pizzas con varias tiendas.
 
--Administrador: Usuario encargado de gestionar la información general del sistema, incluyendo tiendas, empleados y productos.
+Administrador: Usuario responsable de gestionar y supervisar una única tienda y su plantilla. Cada tienda tiene un administrador.
 
 -Alérgeno: Sustancia presente en un ingrediente que puede provocar una reacción alérgica en determinadas personas.
 
 -Alergia: Condición de un cliente que indica que debe evitar consumir determinados alérgenos.
 
--Cliente: Persona que realiza pedidos de productos en alguna de las tiendas de la empresa.
+-Cliente: Usuario registrado que puede realizar pedidos en línea. Las personas que consumen en tienda no necesitan registrarse y sus pedidos no se vinculan a un cliente del sistema.
 
--Cocinero: Empleado encargado de preparar las pizzas y demás productos solicitados en los pedidos.
+-Cocinero: Empleado encargado de preparar las pizzas de los pedidos de su tienda, teniendo en cuenta sus tamaños, cantidades e ingredientes que se solicite retirar.
 
--Empleado: Trabajador asociado a una de las tiendas de la empresa, que desempeña una función determinada.
+-Empleado: Usuario que trabaja en una única tienda y pertenece a una de estas categorías: cocinero, repartidor o camarero.
 
 -Encargado: Empleado responsable de supervisar el funcionamiento de una tienda y gestionar sus trabajadores y pedidos.
 
--Estado del pedido: Situación en la que se encuentra un pedido durante su procesamiento, como pendiente, en preparación, listo, en reparto o entregado.
+-Estado del pedido: Situación actual de un pedido: «en preparación», «en reparto», «entregado» o «no entregado». El estado «en reparto» solo se aplica a pedidos en línea. En los pedidos para consumo en tienda, «entregado» significa que se han servido.
 
--Ingrediente: Alimento o componente utilizado para elaborar una pizza u otro producto del catálogo.
+-Ingrediente: Componente utilizado para elaborar las pizzas del catálogo.
 
--Pedido: Solicitud de compra realizada por un cliente, asociada a una tienda y compuesta por uno o varios productos.
+-Pedido: Solicitud de compra asociada a una tienda y formada por una o varias líneas. Los pedidos en línea están asociados a un cliente registrado; los pedidos para consumo en tienda son registrados por un camarero y no se asocian a un cliente registrado.
 
 -Pizza: Producto elaborado por la pizzería, compuesto por una masa y un conjunto de ingredientes.
 
@@ -55,7 +55,7 @@ A continuación se definen, por orden alfabético, los principales términos rel
 
 -Tienda: Establecimiento físico de la empresa donde trabajan empleados y se preparan y gestionan pedidos.
 
--Tipo de pedido: Modalidad elegida por el cliente para recibir su compra, como recogida en tienda o entrega a domicilio.
+-Tipo de pedido: Modalidad de un pedido: en línea con entrega a domicilio o para consumo en tienda.
 
 ## 3. Visión general del sistema
       
@@ -234,7 +234,7 @@ Como cliente quiero almacenar mi información personal para poder identificarme 
 **Prueba de aceptación**
 
 - Cada cliente deberá estar asociado a un usuario del sistema.
-- Se deberán poder consultar los datos personales del cliente.
+- Se deberán poder consultar los datos personales del cliente, los cuáles son DNI, dirección y código postal.
 - Un cliente podrá realizar varios pedidos.
 - Se deberá poder identificar qué pedidos pertenecen a cada cliente.
 
@@ -256,6 +256,7 @@ Como administrador quiero almacenar la información de las tiendas para poder id
 **Prueba de aceptación**
 
 - Cada tienda deberá tener un identificador único.
+- Cada tienda tiene una dirección exacta y código postal, este código postal puede ser único o no en caso que haya dos tiendas en el mismo barrio.
 - El sistema deberá permitir identificar a las tiendas de la empresa.
 - Se deberá poder conocer qué empleados trabajan en cada tienda.
 - Se deberá poder identificar a los clientes y pedidos asociados a cada tienda, de acuerdo con las relaciones del modelo.
