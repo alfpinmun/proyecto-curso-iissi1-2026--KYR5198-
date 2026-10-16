@@ -27,7 +27,7 @@ Además, los clientes podrán contar con una suscripción que le otorgará prior
 
 A continuación se definen, por orden alfabético, los principales términos relacionados con el sistema de información de una empresa de pizzas con varias tiendas.
 
-Administrador: Usuario responsable de gestionar y supervisar una única tienda y su plantilla. Cada tienda tiene un administrador.
+-Administrador: Usuario responsable de gestionar y supervisar una única tienda y su plantilla. Cada tienda tiene un administrador.
 
 -Alérgeno: Sustancia presente en un ingrediente que puede provocar una reacción alérgica en determinadas personas.
 
@@ -289,11 +289,11 @@ Como administrador quiero disponer de la información sobre la responsabilidad d
 
 **Prueba de aceptación**
 
--Cada administrador deberá estar asociado a un usuario del sistema.
--Cada administrador deberá pertenecer a una única tienda.
--Cada tienda deberá tener un único administrador.
--Se deberán poder identificar los empleados de la tienda bajo su responsabilidad.
--El administrador se distinguirá de las categorías de empleado: cocinero, repartidor y camarero.
+- Cada administrador deberá estar asociado a un usuario del sistema.
+- Cada administrador deberá pertenecer a una única tienda.
+- Cada tienda deberá tener un único administrador.
+- Se deberán poder identificar los empleados de la tienda bajo su responsabilidad.
+- El administrador se distinguirá de las categorías de empleado: cocinero, repartidor y camarero.
 
 ##### R.I.07. Información de pizzas
 
