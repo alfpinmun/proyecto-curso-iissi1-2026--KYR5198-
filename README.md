@@ -1,5 +1,8 @@
 # Título Proyecto
 
+Organización empresa de pizzas
+
+
 ## Miembros del grupo L11-XXX-X
 
 1. Pineda Muñoz, Alfonso
