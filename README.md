@@ -62,6 +62,7 @@ También necesitaríamos un control de entregas e historial, para registrar los 
 Se debería también mantener una gestión de la estructura organizativa. Administrar las distintas sucursales/tiendas físicas, la asignación de la plantilla (repartidores, camareros, cocineros y jefes) y los recursos asociados (motos para reparto).  
 La seguridad y perfiles de acceso. Disponer de un sistema de autenticación único para todos los usuarios que restrinja las funcionalidades según el rol o tipo de usuario asignado. 
 Y por ultimo la gestión de alérgenos y fidelización. Poder registrar las alergias asociadas a cada cliente para prevenir incidentes de salud alimentaria y gestionar planes de suscripción para clientes habituales. 
+
 ### 3.2. Usuarios del sistema
 Dentro de los usuarios del sistema nos encontraríamos al Administrador que su desempeño sería controlar que todo funcione correctamente ser el que decide si cambia algo del catalogo de las tiendas, y el que controla a los distintos usuarios ya que es el que tiene mayor privilegios en la plataforma.
 Después vendrían los empleados que dentro de estos estarían: Los cocineros que necesitarían los respectivos ingredientes y serían los que cambian el estado del pedido, los siguientes serian los camareros que tendrían que estar pendientes del cliente y del pedido para repartirlo en la tienda y por ultimo estarían los repartidores que necesitarían una moto para poder repartir el pedido y de ellos dependería la actualización de la entrega del pedido. 
@@ -71,92 +72,14 @@ Por ultimo estarían los clientes que serían los que ordenan a la tienda lo que
 
 ### 4.1. Requisitos funcionales
 
-#### R.F.01. Gestión de usuarios
-
-Como administrador quiero gestionar los usuarios del sistema para controlar el acceso y la información de los distintos tipos de usuarios.
-
-#### R.F.02. Registro de clientes
-
-Como cliente quiero registrarme en el sistema proporcionando mi nombre, DNI y dirección (dirección exacta y código postal) para poder realizar pedidos en línea.
-
-#### R.F.03. Gestión de empleados
-
-Como administrador quiero registrar, modificar y eliminar empleados (cocineros, repartidores y camareros) para mantener actualizada la plantilla de cada tienda.
-
-#### R.F.04. Gestión de tiendas
-
-Como administrador quiero gestionar las tiendas de la empresa indicando su dirección exacta y código postal para organizar el servicio de las distintas zonas.
-
-#### R.F.05. Asignación automática de tiendas
-
-Como sistema quiero asignar automáticamente a cada cliente la tienda cuyo código postal esté más cerca del código postal de su dirección para determinar qué establecimiento debe gestionar sus pedidos en línea.
-
-#### R.F.06. Realización de pedidos en línea
-
-Como cliente registrado quiero realizar pedidos de pizzas en línea para recibirlos en mi dirección a través de la tienda que me corresponde.
-
-#### R.F.07. Registro de pedidos
-
-Como sistema quiero almacenar el número identificador, la fecha de realización, el tiempo total de entrega, la fecha real de entrega, el estado, el precio total y el tipo (en línea o en tienda) de cada pedido para mantener un registro de las operaciones realizadas.
-
-#### R.F.08. Consulta de pedidos
-
-Como cliente quiero consultar mis pedidos en línea para conocer su información y estado.
-
-#### R.F.09. Actualización del estado de los pedidos
-
-Como empleado quiero actualizar el estado de los pedidos (en preparación, en reparto, entregado o no entregado) para mantener informada a la empresa sobre su preparación y entrega.
-
-#### R.F.10. Asignación de pedidos a tiendas
-
-Como sistema quiero asociar cada pedido en línea a la tienda que corresponde al cliente, y cada pedido en tienda a la tienda donde se registra, para determinar qué establecimiento se encarga de prepararlo y entregarlo.
-
-#### R.F.11. Consulta de pizzas
-
-Como cliente quiero consultar las pizzas del catálogo y sus precios según el tamaño para elegir las que deseo incluir en mi pedido.
-
-#### R.F.12. Gestión de precios
-
-Como administrador quiero establecer y modificar los precios base de las pizzas para cada tamaño, conservando el precio anterior cuando se modifique, para mantener actualizada la oferta de la empresa.
-
-#### R.F.13. Cálculo del precio del pedido
-
-Como cliente quiero conocer el precio total de mi pedido antes de confirmarlo para saber cuánto debo pagar.
-
-#### R.F.14. Gestión de ingredientes
-
-Como administrador quiero gestionar los ingredientes utilizados en la elaboración de las pizzas para mantener actualizada la información de los productos disponibles.
-
-#### R.F.15. Registro de pedidos en tienda
-
-Como camarero quiero registrar los pedidos de los clientes que consumen en la tienda física, identificándolos únicamente por su número de pedido, para atender a los clientes sin necesidad de que se registren.
-
-#### R.F.16. Clasificación de empleados
-
-Como administrador quiero clasificar a los empleados según su función, distinguiendo entre cocineros, repartidores y camareros, y asignar cada uno a una única tienda, para organizar las tareas de cada tienda.
-
-#### R.F.17. Selección del tamaño de las pizzas
-
-Como cliente quiero elegir entre pizzas pequeñas, medianas y grandes para adaptar mi pedido a mis preferencias.
-
-#### R.F.18. Eliminación de ingredientes por alergias
-
-Como cliente quiero eliminar de una pizza del catálogo los ingredientes a los que soy alérgico para poder consumirla de forma segura.
-
-#### R.F.19. Gestión de suscripciones
-
-Como administrador quiero gestionar las suscripciones de los clientes, teniendo en cuenta que un cliente solo puede tener una activa, para identificar a aquellos que disponen de este servicio.
-
-#### R.F.20. Priorización de pedidos de clientes suscritos
-
-Como sistema quiero priorizar los pedidos de los clientes con una suscripción activa durante la elaboración y la entrega para ofrecerles las ventajas asociadas a su suscripción.
-
+#### R.F.01. Consulta del catálogo de pizzas
+Como cliente quiero consultar el catálogo de pizzas disponibles, incluyendo sus ingredientes, tamaños y precios, para poder elegir los productos que mejor se adapten a mis preferencias.
 
 **Pruebas de aceptación**
 
-- Se deberá mostrar un listado de las pizzas disponibles.
-- Cada pizza deberá mostrar su nombre, ingredientes y tamaños disponibles.
-- Se deberá mostrar el precio correspondiente a cada tamaño.
+- El sistema deberá mostrar las pizzas disponibles en el catálogo.
+- Cada pizza deberá mostrar su nombre y sus ingredientes.
+- Se deberán mostrar los tamaños disponibles y el precio correspondiente a cada uno.
 - Si no existen pizzas disponibles, el sistema deberá mostrar un listado vacío.
 
 ##### R.F.02. Consulta de ingredientes de una pizza
@@ -227,16 +150,17 @@ Como administrador quiero consultar los trabajadores supervisados por un jefe de
 - Se deberá mostrar el nombre y la categoría de cada trabajador.
 - Los empleados mostrados deberán pertenecer a la misma tienda que su jefe.
 
-##### R.F.08. Consulta de alergias de un cliente
+##### R.F.08. Consulta de pedidos asignados a un repartidor
 
-Como cliente quiero consultar mis alergias registradas para conocer qué alérgenos tiene asociados mi perfil.
+Como repartidor quiero consultar los pedidos de reparto que tengo asignados para conocer cuáles debo entregar y su estado actual.
 
 **Pruebas de aceptación**
 
-- El sistema deberá mostrar los alérgenos registrados para el cliente identificado.
-- Se deberá mostrar la denominación de cada alérgeno.
-- El cliente no podrá acceder mediante esta consulta a la información de alergias de otros clientes.
-- Si no existen alergias registradas, se mostrará un listado vacío.
+- El sistema deberá mostrar los pedidos asignados al repartidor identificado.
+- Cada pedido deberá mostrar su número, fecha, dirección de entrega y estado.
+- No deberán aparecer pedidos asignados a otros repartidores.
+- No deberán aparecer pedidos realizados para consumo en tienda.
+- Si el repartidor no tiene pedidos asignados, se mostrará un listado vacío.
 
 ##### R.F.09. Consulta de suscripciones de un cliente
 
@@ -283,6 +207,7 @@ Como cliente quiero consultar las pizzas disponibles filtradas por tamaño y pre
 - El sistema deberá mostrar las pizzas del tamaño seleccionado cuyo precio no supere el máximo indicado.
 - Cada resultado deberá mostrar el nombre de la pizza, su tamaño y su precio.
 - Si ninguna pizza cumple las condiciones, se mostrará un listado vacío.
+
 
 #### 4.1.1. Requisitos de información
 
@@ -439,6 +364,7 @@ Como administrador quiero almacenar las suscripciones contratadas por los client
 - Se deberá almacenar su fecha de finalización.
 - Un cliente podrá tener registradas varias suscripciones correspondientes a diferentes periodos.
 - Se deberán conservar las suscripciones finalizadas como parte del historial de contrataciones.
+
 #### 4.1.2. Reglas de negocio
 
 ##### R.N.01. Identificación de clientes 
@@ -459,6 +385,9 @@ En cada tienda es obligatorio e independiente de las otras tiendas tener: 1 jefe
 
 ##### R.N.06. Una categoría 
 Dentro del sistema cada empleado solo puede tener una categoría; si soy jefe no puedo ser cocinero, si soy camarero no puedo ser repartidor y así respectivamente con cada uno.
+
+#### R.N.07. Priorización de pedidos de clientes suscritos
+Los pedidos realizados por clientes con una suscripción activa tendrán prioridad frente a los pedidos de clientes no suscritos que aún no hayan comenzado a prepararse, tanto en la preparación como en la asignación para el reparto.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
