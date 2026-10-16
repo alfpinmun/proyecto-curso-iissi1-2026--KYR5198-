@@ -1,5 +1,8 @@
 # Título Proyecto
 
+Organización empresa de pizzas
+
+
 ## Miembros del grupo L11-XXX-X
 
 1. Pineda Muñoz, Alfonso
@@ -24,35 +27,29 @@ Además, los clientes podrán contar con una suscripción que le otorgará prior
 
 A continuación se definen, por orden alfabético, los principales términos relacionados con el sistema de información de una empresa de pizzas con varias tiendas.
 
--Administrador: Usuario encargado de gestionar la información general del sistema, incluyendo tiendas, empleados y productos.
+Administrador: Usuario responsable de gestionar y supervisar una única tienda y su plantilla. Cada tienda tiene un administrador.
 
 -Alérgeno: Sustancia presente en un ingrediente que puede provocar una reacción alérgica en determinadas personas.
 
--Alergia: Condición de un cliente que indica que debe evitar consumir determinados alérgenos.
+-Cliente: Usuario registrado que puede realizar pedidos en línea. Las personas que consumen en tienda no necesitan registrarse y sus pedidos no se vinculan a un cliente del sistema.
 
--Cliente: Persona que realiza pedidos de productos en alguna de las tiendas de la empresa.
+-Cocinero: Empleado encargado de preparar las pizzas de los pedidos de su tienda, teniendo en cuenta sus tamaños, cantidades e ingredientes que se solicite retirar.
 
--Cocinero: Empleado encargado de preparar las pizzas y demás productos solicitados en los pedidos.
+-Empleado: Usuario que trabaja en una única tienda y pertenece a una de estas categorías: cocinero, repartidor o camarero.
 
--Empleado: Trabajador asociado a una de las tiendas de la empresa, que desempeña una función determinada.
+-Estado del pedido: Situación actual de un pedido: «en preparación», «en reparto», «entregado» o «no entregado». El estado «en reparto» solo se aplica a pedidos en línea. En los pedidos para consumo en tienda, «entregado» significa que se han servido.
 
--Encargado: Empleado responsable de supervisar el funcionamiento de una tienda y gestionar sus trabajadores y pedidos.
+-Ingrediente: Componente utilizado para elaborar las pizzas del catálogo.
 
--Estado del pedido: Situación en la que se encuentra un pedido durante su procesamiento, como pendiente, en preparación, listo, en reparto o entregado.
-
--Ingrediente: Alimento o componente utilizado para elaborar una pizza u otro producto del catálogo.
-
--Pedido: Solicitud de compra realizada por un cliente, asociada a una tienda y compuesta por uno o varios productos.
+-Pedido: Solicitud de compra asociada a una tienda y formada por una o varias líneas. Los pedidos en línea están asociados a un cliente registrado; los pedidos para consumo en tienda son registrados por un camarero y no se asocian a un cliente registrado.
 
 -Pizza: Producto elaborado por la pizzería, compuesto por una masa y un conjunto de ingredientes.
-
--Producto: Artículo que la empresa ofrece a sus clientes, como pizzas, bebidas o complementos.
 
 -Repartidor: Empleado encargado de transportar y entregar los pedidos a domicilio.
 
 -Tienda: Establecimiento físico de la empresa donde trabajan empleados y se preparan y gestionan pedidos.
 
--Tipo de pedido: Modalidad elegida por el cliente para recibir su compra, como recogida en tienda o entrega a domicilio.
+-Tipo de pedido: Modalidad de un pedido: en línea con entrega a domicilio o para consumo en tienda.
 
 ## 3. Visión general del sistema
       
@@ -62,6 +59,7 @@ También necesitaríamos un control de entregas e historial, para registrar los 
 Se debería también mantener una gestión de la estructura organizativa. Administrar las distintas sucursales/tiendas físicas, la asignación de la plantilla (repartidores, camareros, cocineros y jefes) y los recursos asociados (motos para reparto).  
 La seguridad y perfiles de acceso. Disponer de un sistema de autenticación único para todos los usuarios que restrinja las funcionalidades según el rol o tipo de usuario asignado. 
 Y por ultimo la gestión de alérgenos y fidelización. Poder registrar las alergias asociadas a cada cliente para prevenir incidentes de salud alimentaria y gestionar planes de suscripción para clientes habituales. 
+
 ### 3.2. Usuarios del sistema
 Dentro de los usuarios del sistema nos encontraríamos al Administrador que su desempeño sería controlar que todo funcione correctamente ser el que decide si cambia algo del catalogo de las tiendas, y el que controla a los distintos usuarios ya que es el que tiene mayor privilegios en la plataforma.
 Después vendrían los empleados que dentro de estos estarían: Los cocineros que necesitarían los respectivos ingredientes y serían los que cambian el estado del pedido, los siguientes serian los camareros que tendrían que estar pendientes del cliente y del pedido para repartirlo en la tienda y por ultimo estarían los repartidores que necesitarían una moto para poder repartir el pedido y de ellos dependería la actualización de la entrega del pedido. 
@@ -71,92 +69,14 @@ Por ultimo estarían los clientes que serían los que ordenan a la tienda lo que
 
 ### 4.1. Requisitos funcionales
 
-#### R.F.01. Gestión de usuarios
-
-Como administrador quiero gestionar los usuarios del sistema para controlar el acceso y la información de los distintos tipos de usuarios.
-
-#### R.F.02. Registro de clientes
-
-Como cliente quiero registrarme en el sistema proporcionando mi nombre, DNI y dirección (dirección exacta y código postal) para poder realizar pedidos en línea.
-
-#### R.F.03. Gestión de empleados
-
-Como administrador quiero registrar, modificar y eliminar empleados (cocineros, repartidores y camareros) para mantener actualizada la plantilla de cada tienda.
-
-#### R.F.04. Gestión de tiendas
-
-Como administrador quiero gestionar las tiendas de la empresa indicando su dirección exacta y código postal para organizar el servicio de las distintas zonas.
-
-#### R.F.05. Asignación automática de tiendas
-
-Como sistema quiero asignar automáticamente a cada cliente la tienda cuyo código postal esté más cerca del código postal de su dirección para determinar qué establecimiento debe gestionar sus pedidos en línea.
-
-#### R.F.06. Realización de pedidos en línea
-
-Como cliente registrado quiero realizar pedidos de pizzas en línea para recibirlos en mi dirección a través de la tienda que me corresponde.
-
-#### R.F.07. Registro de pedidos
-
-Como sistema quiero almacenar el número identificador, la fecha de realización, el tiempo total de entrega, la fecha real de entrega, el estado, el precio total y el tipo (en línea o en tienda) de cada pedido para mantener un registro de las operaciones realizadas.
-
-#### R.F.08. Consulta de pedidos
-
-Como cliente quiero consultar mis pedidos en línea para conocer su información y estado.
-
-#### R.F.09. Actualización del estado de los pedidos
-
-Como empleado quiero actualizar el estado de los pedidos (en preparación, en reparto, entregado o no entregado) para mantener informada a la empresa sobre su preparación y entrega.
-
-#### R.F.10. Asignación de pedidos a tiendas
-
-Como sistema quiero asociar cada pedido en línea a la tienda que corresponde al cliente, y cada pedido en tienda a la tienda donde se registra, para determinar qué establecimiento se encarga de prepararlo y entregarlo.
-
-#### R.F.11. Consulta de pizzas
-
-Como cliente quiero consultar las pizzas del catálogo y sus precios según el tamaño para elegir las que deseo incluir en mi pedido.
-
-#### R.F.12. Gestión de precios
-
-Como administrador quiero establecer y modificar los precios base de las pizzas para cada tamaño, conservando el precio anterior cuando se modifique, para mantener actualizada la oferta de la empresa.
-
-#### R.F.13. Cálculo del precio del pedido
-
-Como cliente quiero conocer el precio total de mi pedido antes de confirmarlo para saber cuánto debo pagar.
-
-#### R.F.14. Gestión de ingredientes
-
-Como administrador quiero gestionar los ingredientes utilizados en la elaboración de las pizzas para mantener actualizada la información de los productos disponibles.
-
-#### R.F.15. Registro de pedidos en tienda
-
-Como camarero quiero registrar los pedidos de los clientes que consumen en la tienda física, identificándolos únicamente por su número de pedido, para atender a los clientes sin necesidad de que se registren.
-
-#### R.F.16. Clasificación de empleados
-
-Como administrador quiero clasificar a los empleados según su función, distinguiendo entre cocineros, repartidores y camareros, y asignar cada uno a una única tienda, para organizar las tareas de cada tienda.
-
-#### R.F.17. Selección del tamaño de las pizzas
-
-Como cliente quiero elegir entre pizzas pequeñas, medianas y grandes para adaptar mi pedido a mis preferencias.
-
-#### R.F.18. Eliminación de ingredientes por alergias
-
-Como cliente quiero eliminar de una pizza del catálogo los ingredientes a los que soy alérgico para poder consumirla de forma segura.
-
-#### R.F.19. Gestión de suscripciones
-
-Como administrador quiero gestionar las suscripciones de los clientes, teniendo en cuenta que un cliente solo puede tener una activa, para identificar a aquellos que disponen de este servicio.
-
-#### R.F.20. Priorización de pedidos de clientes suscritos
-
-Como sistema quiero priorizar los pedidos de los clientes con una suscripción activa durante la elaboración y la entrega para ofrecerles las ventajas asociadas a su suscripción.
-
+#### R.F.01. Consulta del catálogo de pizzas
+Como cliente quiero consultar el catálogo de pizzas disponibles, incluyendo sus ingredientes, tamaños y precios, para poder elegir los productos que mejor se adapten a mis preferencias.
 
 **Pruebas de aceptación**
 
-- Se deberá mostrar un listado de las pizzas disponibles.
-- Cada pizza deberá mostrar su nombre, ingredientes y tamaños disponibles.
-- Se deberá mostrar el precio correspondiente a cada tamaño.
+- El sistema deberá mostrar las pizzas disponibles en el catálogo.
+- Cada pizza deberá mostrar su nombre y sus ingredientes.
+- Se deberán mostrar los tamaños disponibles y el precio vigente de cada uno, teniendo en cuenta las modificaciones temporales activas.
 - Si no existen pizzas disponibles, el sistema deberá mostrar un listado vacío.
 
 ##### R.F.02. Consulta de ingredientes de una pizza
@@ -189,7 +109,9 @@ Como empleado quiero consultar los pedidos pendientes de mi tienda para conocer 
 **Pruebas de aceptación**
 
 - El sistema deberá mostrar los pedidos de la tienda a la que pertenece el empleado.
-- La consulta deberá permitir identificar los pedidos que todavía no han sido entregados.
+- Se mostrarán únicamente los pedidos en los estados «en preparación» y «en reparto», excluyendo los estados «entregado» y «no entregado».
+- Se podrá consultar el detalle de las líneas de cada pedido, incluyendo pizzas, tamaños, cantidades e ingredientes que se solicita retirar.
+- Si no existen pedidos pendientes, se mostrará un listado vacío.
 - Cada pedido deberá mostrar su número identificativo, fecha, estado y productos solicitados.
 - No deberán aparecer pedidos de otras tiendas.
 
@@ -210,67 +132,74 @@ Como administrador quiero consultar los empleados de una tienda para conocer su 
 
 **Pruebas de aceptación**
 
-- Se deberá poder seleccionar una tienda.
-- El sistema deberá mostrar los empleados asociados a la tienda seleccionada.
+- Como administrador quiero consultar la plantilla de mi tienda para conocer sus integrantes y sus funciones.
+- La consulta corresponderá a la tienda del administrador identificado.
 - Se deberá mostrar el nombre y la categoría profesional de cada empleado.
-- Se deberá poder identificar al jefe responsable de la tienda.
-- No deberán aparecer trabajadores asociados a otras tiendas.
+- El sistema deberá mostrar los empleados asociados a esa tienda.
+- Se deberá identificar al administrador responsable de la tienda.
 
-##### R.F.07. Consulta de trabajadores supervisados por un jefe
+##### R.F.07. Consulta de empleados por categoría
 
-Como administrador quiero consultar los trabajadores supervisados por un jefe de tienda para conocer la estructura organizativa del establecimiento.
+Como administrador quiero consultar los empleados de mi tienda por categoría para conocer quiénes desempeñan cada función.
 
 **Pruebas de aceptación**
 
-- Se deberá poder seleccionar un jefe de tienda.
-- El sistema deberá mostrar los empleados supervisados por el jefe seleccionado.
+- Se deberá poder seleccionar una categoría: cocinero, repartidor o camarero.
+- El sistema deberá mostrar los empleados de la tienda del administrador identificado que pertenezcan a la categoría seleccionada.
 - Se deberá mostrar el nombre y la categoría de cada trabajador.
-- Los empleados mostrados deberán pertenecer a la misma tienda que su jefe.
+- No deberán aparecer empleados de otras tiendas ni de otras categorías.
+- Si no existen empleados que cumplan las condiciones, se mostrará un listado vacío.
 
-##### R.F.08. Consulta de alergias de un cliente
+##### R.F.08. Consulta de pedidos asignados a un repartidor
 
-Como cliente quiero consultar mis alergias registradas para conocer qué alérgenos tiene asociados mi perfil.
+Como repartidor quiero consultar los pedidos de reparto que tengo asignados para conocer cuáles debo entregar y su estado actual.
 
 **Pruebas de aceptación**
 
-- El sistema deberá mostrar los alérgenos registrados para el cliente identificado.
-- Se deberá mostrar la denominación de cada alérgeno.
-- El cliente no podrá acceder mediante esta consulta a la información de alergias de otros clientes.
-- Si no existen alergias registradas, se mostrará un listado vacío.
+- El sistema deberá mostrar los pedidos asignados al repartidor identificado.
+- Cada pedido deberá mostrar su número, fecha, dirección de entrega y estado.
+- No deberán aparecer pedidos asignados a otros repartidores.
+- No deberán aparecer pedidos realizados para consumo en tienda.
+- Si el repartidor no tiene pedidos asignados, se mostrará un listado vacío.
 
 ##### R.F.09. Consulta de suscripciones de un cliente
 
-Como cliente quiero consultar mis suscripciones para conocer las modalidades contratadas y sus periodos de vigencia.
+Como cliente quiero consultar mis contrataciones de suscripción para conocer sus periodos de vigencia y comprobar si tengo una activa.
 
 **Pruebas de aceptación**
 
 - El sistema deberá mostrar las suscripciones asociadas al cliente identificado.
-- Cada registro deberá mostrar la modalidad contratada y las fechas de inicio y finalización.
+- Cada registro deberá mostrar las fechas de inicio y finalización de la contratación.
+- Si el cliente nunca ha contratado una suscripción, se mostrará un listado vacío.
 - Se deberá indicar si la suscripción está vigente en la fecha de consulta.
 - Se deberán poder consultar también las suscripciones finalizadas.
 - No deberán aparecer suscripciones de otros clientes.
 
 ##### R.F.10. Listado de pedidos por tienda y fecha
 
-Como administrador quiero consultar los pedidos realizados en una tienda durante un periodo determinado para conocer su actividad.
+Como administrador quiero consultar los pedidos realizados en mi tienda durante un periodo determinado para conocer su actividad.
 
 **Pruebas de aceptación**
 
-- Se deberá poder seleccionar una tienda y un intervalo de fechas.
-- El sistema deberá mostrar los pedidos asociados a esa tienda dentro del periodo seleccionado.
+- Se deberá poder seleccionar un intervalo de fechas. La consulta se limitará a la tienda del administrador identificado.
+- El sistema deberá mostrar los pedidos de esa tienda cuya fecha de realización esté dentro del periodo seleccionado, incluyendo ambos días completos.
 - Cada resultado deberá mostrar el número de pedido, su fecha, importe total y estado.
 - No deberán aparecer pedidos de otras tiendas ni de fechas fuera del intervalo indicado.
+- La fecha inicial no podrá ser posterior a la fecha final.
+- Se incluirán tanto los pedidos en línea como los pedidos para consumo en tienda.
+- Si no existen pedidos que cumplan las condiciones, se mostrará un listado vacío.
 
 ##### R.F.11. Consulta de suscriptores activos
 
-Como administrador quiero consultar los clientes que tienen una suscripción vigente para conocer qué clientes disponen de las ventajas de suscripción.
+Como administrador quiero consultar los clientes asociados a mi tienda que tienen una suscripción vigente para conocer quiénes disponen de sus ventajas.
 
 **Pruebas de aceptación**
 
-- Se deberá mostrar un listado de clientes con suscripciones vigentes en la fecha de consulta.
-- Se deberá mostrar el cliente, la modalidad de suscripción y su fecha de finalización.
-- No deberán aparecer clientes cuyas suscripciones hayan finalizado.
-- Un mismo cliente no deberá aparecer duplicado por una misma suscripción vigente.
+- Se deberá mostrar un listado de clientes asociados a la tienda del administrador identificado con suscripciones vigentes en el momento de la consulta.
+- Se deberá mostrar el identificador y nombre del cliente, junto con las fechas de inicio y finalización de su suscripción.
+- No deberán aparecer clientes cuyas suscripciones hayan finalizado o todavía no hayan comenzado.
+- Cada cliente deberá aparecer una única vez.
+- Si no existen suscriptores activos, se mostrará un listado vacío.
 
 ##### R.F.12. Consulta de pizzas por tamaño y precio
 
@@ -280,9 +209,10 @@ Como cliente quiero consultar las pizzas disponibles filtradas por tamaño y pre
 
 - Se deberá poder seleccionar uno de los tres tamaños disponibles.
 - Se deberá poder establecer un precio máximo.
-- El sistema deberá mostrar las pizzas del tamaño seleccionado cuyo precio no supere el máximo indicado.
-- Cada resultado deberá mostrar el nombre de la pizza, su tamaño y su precio.
+- El sistema deberá mostrar las pizzas del tamaño seleccionado cuyo precio vigente no supere el máximo indicado, teniendo en cuenta las modificaciones temporales activas.
+- Cada resultado deberá mostrar el nombre de la pizza, su tamaño y su precio vigente.
 - Si ninguna pizza cumple las condiciones, se mostrará un listado vacío.
+
 
 #### 4.1.1. Requisitos de información
 
@@ -306,20 +236,25 @@ Como cliente quiero almacenar mi información personal para poder identificarme 
 **Prueba de aceptación**
 
 - Cada cliente deberá estar asociado a un usuario del sistema.
-- Se deberán poder consultar los datos personales del cliente.
+- Se deberán registrar y poder consultar el nombre, DNI, dirección exacta y código postal del cliente.
+- El DNI deberá ser único entre los clientes.
+- Se deberá identificar la tienda asignada a cada cliente.
+- No se almacenarán las alergias del cliente.
 - Un cliente podrá realizar varios pedidos.
 - Se deberá poder identificar qué pedidos pertenecen a cada cliente.
 
-##### R.I.03. Información de alergias de clientes:
+##### R.I.03. Información de ingredientes retirados
 
-Como cliente quiero registrar los ingredientes a los que soy alérgico para evitar realizar pedidos que contengan ingredientes incompatibles con mis alergias.
+Como cocinero quiero conocer los ingredientes que se solicita retirar de cada pizza pedida para prepararla conforme a lo solicitado.
 
 **Prueba de aceptación**
 
-- Un cliente podrá tener alergia a varios ingredientes.
-- Un mismo ingrediente podrá provocar alergias a varios clientes.
-- Se deberán almacenar las relaciones entre los clientes y los ingredientes a los que son alérgicos.
-- Se deberá poder consultar la información sobre las alergias de cada cliente.
+-Se deberán registrar los ingredientes que se solicite retirar de cada línea de pedido.
+-Una línea podrá tener ninguno, uno o varios ingredientes retirados.
+-Los ingredientes retirados deberán pertenecer a la composición base de la pizza seleccionada.
+-Todas las unidades de una misma línea compartirán los ingredientes retirados.
+-Las pizzas con diferentes personalizaciones deberán registrarse en líneas distintas.
+-La retirada de ingredientes no modificará la composición de la pizza en el catálogo.
 
 ##### R.I.04. Información de tiendas:
 
@@ -328,9 +263,12 @@ Como administrador quiero almacenar la información de las tiendas para poder id
 **Prueba de aceptación**
 
 - Cada tienda deberá tener un identificador único.
-- El sistema deberá permitir identificar a las tiendas de la empresa.
+- Cada tienda tiene una dirección exacta y código postal, este código postal puede ser único o no en caso que haya dos tiendas en el mismo barrio.
+- Se deberán registrar la dirección exacta y el código postal de cada tienda.
 - Se deberá poder conocer qué empleados trabajan en cada tienda.
-- Se deberá poder identificar a los clientes y pedidos asociados a cada tienda, de acuerdo con las relaciones del modelo.
+- Se deberán poder identificar los clientes asignados a cada tienda y todos sus pedidos, tanto en línea como para consumo en tienda.
+- No podrán existir dos tiendas con el mismo código postal.
+- Se deberá identificar al administrador responsable de cada tienda.
 
 ##### R.I.05. Información de empleados:
 
@@ -339,20 +277,23 @@ Como administrador quiero almacenar la información de los empleados para conoce
 **Prueba de aceptación**
 
 - Cada empleado deberá estar asociado a un usuario del sistema.
-- Cada empleado deberá trabajar en una tienda.
+- Cada empleado deberá pertenecer a una única tienda.
+- Cada empleado deberá tener una única categoría: cocinero, repartidor o camarero.
+- Se deberá poder consultar el identificador, nombre, categoría y tienda de cada empleado.
 - Se deberá poder conocer el número de empleados de cada tienda.
 - Se deberá poder consultar la información de los empleados de una tienda determinada.
 
-##### R.I.06. Información de jefes y trabajadores:
+##### R.I.06. Información de administradores de la tienda:
 
-Como administrador quiero conocer la información de los jefes y los trabajadores de cada tienda para identificar quién es responsable de supervisar a cada empleado.
+Como administrador quiero disponer de la información sobre la responsabilidad de las tiendas para identificar quién supervisa cada establecimiento y su plantilla.
 
 **Prueba de aceptación**
 
-- Se deberá poder identificar al jefe de cada tienda.
-- Se deberá poder conocer qué empleados están supervisados por un jefe.
-- Se deberá almacenar la relación entre el jefe y los trabajadores a su cargo.
-- Se deberá poder consultar la información de los empleados supervisados por un jefe determinado.
+-Cada administrador deberá estar asociado a un usuario del sistema.
+-Cada administrador deberá pertenecer a una única tienda.
+-Cada tienda deberá tener un único administrador.
+-Se deberán poder identificar los empleados de la tienda bajo su responsabilidad.
+-El administrador se distinguirá de las categorías de empleado: cocinero, repartidor y camarero.
 
 ##### R.I.07. Información de pizzas
 
@@ -380,18 +321,24 @@ Como administrador quiero almacenar la información de los ingredientes utilizad
 
 ##### R.I.09. Información de pedidos
 
-Como administrador quiero almacenar la información de los pedidos realizados por los clientes para mantener un registro de las operaciones y entregas efectuadas.
+Como administrador quiero almacenar la información de los pedidos en línea y para consumo en tienda para mantener un registro de las operaciones de mi establecimiento.
 
 **Pruebas de aceptación**
 
 - Cada pedido deberá tener un número identificativo único.
 - Se deberá almacenar la fecha y hora de realización del pedido.
 - Se deberá almacenar el importe total correspondiente al pedido.
-- Cada pedido deberá estar asociado al cliente que lo ha realizado y a la tienda responsable de su preparación.
+- Cada pedido deberá estar asociado a una única tienda. Los pedidos en línea deberán estar asociados a un cliente registrado; los pedidos para consumo en tienda no tendrán cliente asociado.
 - Se deberá registrar el estado del pedido.
-- Se deberá almacenar la fecha y hora de entrega cuando corresponda.
+- Se deberá almacenar la fecha y hora de entrega efectiva de los pedidos en línea entregados. Los pedidos para consumo en tienda no tendrán fecha de entrega.
 - Se deberá conservar el importe aplicado al pedido, aunque posteriormente cambien los precios del catálogo.
-
+- Se deberá registrar el tipo de pedido: en línea o para consumo en tienda.
+- Los pedidos en línea deberán conservar la dirección exacta y el código postal de entrega aplicables al pedido, aunque posteriormente cambie la dirección del cliente.
+- Se deberá identificar al cocinero responsable de preparar cada pedido cuando se le asigne.
+- En los pedidos en línea se deberá identificar al repartidor responsable cuando se le asigne. Los pedidos para consumo en tienda no tendrán repartidor.
+- Se deberá identificar al camarero que registre cada pedido para consumo en tienda.
+- Los empleados asignados a un pedido deberán pertenecer a la tienda responsable de ese pedido.
+- El tiempo total de entrega se obtendrá de la diferencia entre la fecha y hora de realización y la fecha y hora de entrega efectiva. No se calculará para pedidos sin entrega efectiva ni para pedidos de consumo en tienda.
 
 ##### R.I.10. Información de líneas de pedido:
 
@@ -400,10 +347,15 @@ Como cocinero quiero conocer las pizzas y cantidades incluidas en cada pedido pa
 **Prueba de aceptación**
 
 - Cada línea de pedido deberá estar asociada a un pedido.
-- Se deberá conocer la pizza correspondiente a cada línea de pedido.
-- Se deberá almacenar la cantidad solicitada de cada pizza.
-- Se deberá almacenar el precio correspondiente a cada línea de pedido.
-- Un pedido podrá contener varias líneas de pedido.
+- Se deberá conocer la pizza y el tamaño correspondientes a cada línea de pedido.
+- Se deberá almacenar la cantidad solicitada en cada línea, que será un número entero positivo.
+- Se deberá conservar el precio unitario aplicado a cada línea. Su importe será el resultado de multiplicar ese precio por la cantidad solicitada.
+- Cada pedido deberá contener al menos una línea.
+- Cada línea deberá poder distinguirse de las demás líneas del mismo pedido.
+- Se deberán poder consultar los ingredientes retirados de cada línea, según R.I.03.
+- Todas las unidades de una misma línea compartirán pizza, tamaño, precio unitario e ingredientes retirados.
+- El importe total del pedido será la suma de los importes de sus líneas.
+- Los cambios posteriores de los precios del catálogo no modificarán los precios aplicados a las líneas ya registradas.
 
 ##### R.I.11. Información de estados de pedidos
 
@@ -412,9 +364,12 @@ Como administrador quiero almacenar los estados asociados a los pedidos para man
 **Pruebas de aceptación**
 
 - Cada estado deberá disponer de un identificador único y una denominación.
-- Se deberán registrar, como mínimo, los estados «entregado» y «no entregado».
+- Los estados permitidos serán «en preparación», «en reparto», «entregado» y «no entregado».
 - Cada pedido deberá tener asociado un estado actual.
 - Se deberá conservar la relación entre cada pedido y su estado correspondiente.
+- Los pedidos para consumo en tienda no podrán encontrarse en el estado «en reparto».
+- En los pedidos para consumo en tienda, «entregado» indicará que el pedido se ha servido.
+- El estado «no entregado» identificará un pedido finalizado sin haberse entregado o servido.
 
 ##### R.I.12. Información de tamaños de pizzas
 
@@ -427,18 +382,36 @@ Como administrador quiero almacenar los tamaños disponibles de las pizzas para 
 - Se deberá almacenar la relación entre las pizzas y sus tamaños disponibles.
 - Se deberá registrar el precio correspondiente a cada combinación de pizza y tamaño.
 
+#### R.I.13. Información de precios de pizzas
+
+Como administrador quiero disponer de los precios de cada pizza y tamaño para conocer la tarifa vigente y conservar el precio habitual ante modificaciones temporales.
+
+**Pruebas de aceptación**
+
+- Cada combinación de pizza y tamaño deberá tener un precio base.
+- Se podrá registrar un precio temporal sin sobrescribir el precio base.
+- Se deberá identificar si la modificación temporal está activa.
+- El precio vigente será el temporal cuando la modificación esté activa y el precio base en caso contrario.
+- Al finalizar la modificación temporal, se volverá a aplicar el precio base conservado.
+- Los cambios de precio no modificarán los importes de los pedidos ya registrados.
+
 ##### R.I.14. Información de suscripciones de clientes
 
-Como administrador quiero almacenar las suscripciones contratadas por los clientes para mantener un registro de las modalidades contratadas y sus periodos de vigencia.
+Como administrador quiero almacenar las contrataciones de suscripción de los clientes para conocer sus periodos de vigencia y conservar su historial.
 
 **Pruebas de aceptación**
 
 - Cada contratación deberá estar asociada a un cliente.
-- Se deberá identificar la modalidad de suscripción contratada.
-- Se deberá almacenar la fecha de inicio de cada suscripción contratada.
-- Se deberá almacenar su fecha de finalización.
+- Todas las contrataciones corresponderán al único tipo de suscripción existente.
+- Se deberá almacenar la fecha y hora de inicio de cada contratación.
+- Se deberá almacenar su fecha y hora de finalización de cada contratación.
 - Un cliente podrá tener registradas varias suscripciones correspondientes a diferentes periodos.
 - Se deberán conservar las suscripciones finalizadas como parte del historial de contrataciones.
+- Cada contratación deberá tener un identificador único.
+- El inicio de una contratación deberá ser anterior a su finalización.
+- Una contratación estará vigente desde su inicio, incluido, hasta su finalización, excluida.
+- Los periodos de las contrataciones de un mismo cliente no podrán solaparse.
+
 #### 4.1.2. Reglas de negocio
 
 ##### R.N.01. Identificación de clientes 
@@ -459,6 +432,9 @@ En cada tienda es obligatorio e independiente de las otras tiendas tener: 1 jefe
 
 ##### R.N.06. Una categoría 
 Dentro del sistema cada empleado solo puede tener una categoría; si soy jefe no puedo ser cocinero, si soy camarero no puedo ser repartidor y así respectivamente con cada uno.
+
+#### R.N.07. Priorización de pedidos de clientes suscritos
+Los pedidos realizados por clientes con una suscripción activa tendrán prioridad frente a los pedidos de clientes no suscritos que aún no hayan comenzado a prepararse, tanto en la preparación como en la asignación para el reparto.
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
