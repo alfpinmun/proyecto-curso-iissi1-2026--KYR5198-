@@ -25,32 +25,6 @@ Además, los clientes podrán contar con una suscripción que le otorgará prior
 
 ## 2. Glosario de términos
 
-A continuación se definen, por orden alfabético, los principales términos relacionados con el sistema de información de una empresa de pizzas con varias tiendas.
-
--Administrador: Usuario responsable de gestionar y supervisar una única tienda y su plantilla. Cada tienda tiene un administrador.
-
--Alérgeno: Sustancia presente en un ingrediente que puede provocar una reacción alérgica en determinadas personas.
-
--Cliente: Usuario registrado que puede realizar pedidos en línea. Las personas que consumen en tienda no necesitan registrarse y sus pedidos no se vinculan a un cliente del sistema.
-
--Cocinero: Empleado encargado de preparar las pizzas de los pedidos de su tienda, teniendo en cuenta sus tamaños, cantidades e ingredientes que se solicite retirar.
-
--Empleado: Usuario que trabaja en una única tienda y pertenece a una de estas categorías: cocinero, repartidor o camarero.
-
--Estado del pedido: Situación actual de un pedido: «en preparación», «en reparto», «entregado» o «no entregado». El estado «en reparto» solo se aplica a pedidos en línea. En los pedidos para consumo en tienda, «entregado» significa que se han servido.
-
--Ingrediente: Componente utilizado para elaborar las pizzas del catálogo.
-
--Pedido: Solicitud de compra asociada a una tienda y formada por una o varias líneas. Los pedidos en línea están asociados a un cliente registrado; los pedidos para consumo en tienda son registrados por un camarero y no se asocian a un cliente registrado.
-
--Pizza: Producto elaborado por la pizzería, compuesto por una masa y un conjunto de ingredientes.
-
--Repartidor: Empleado encargado de transportar y entregar los pedidos a domicilio.
-
--Tienda: Establecimiento físico de la empresa donde trabajan empleados y se preparan y gestionan pedidos.
-
--Tipo de pedido: Modalidad de un pedido: en línea con entrega a domicilio o para consumo en tienda.
-
 ## 3. Visión general del sistema
       
 ### 3.1. Requisitos generales
