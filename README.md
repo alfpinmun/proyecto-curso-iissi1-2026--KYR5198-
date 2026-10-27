@@ -484,6 +484,16 @@ para [razón]
 [Archivo editable del ejemplo: se necesita abrir con draw.io](Ejemplo_5_2_Pedido_Domicilio.drawio)
 
 
+Se representa un escenario parcial de un pedido a domicilio entregado.
+Ana, cliente asociada a la tienda Centro, realiza el pedido 101 el
+27 de octubre de 2026 a las 14:00. Solicita dos pizzas Margarita
+medianas a 8 € por unidad. El pedido se entrega a las 14:30,
+con un importe total de 16 € y un tiempo de entrega de 30 minutos.
+
+El diagrama muestra únicamente los objetos y enlaces relevantes
+para este escenario.
+
+
 ## 6. Matrices de trazabilidad
 
 Las matrices relacionan los requisitos de información y las reglas de
