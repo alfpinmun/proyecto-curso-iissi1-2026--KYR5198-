@@ -479,24 +479,130 @@ para [razón]
 
 ### 5.2. Escenarios de prueba
 
-- con descripción textual y diagrama de objetos UML.
+![Modelo de ejemplo](Ejemplo_5_2_Pedido_Domicilio.drawio.png)
+
+[Archivo editable del ejemplo: se necesita abrir con draw.io](Ejemplo_5_2_Pedido_Domicilio.drawio)
+
+
+Se representa un escenario parcial de un pedido a domicilio entregado.
+Ana, cliente asociada a la tienda Centro, realiza el pedido 101 el
+27 de octubre de 2026 a las 14:00. Solicita dos pizzas Margarita
+medianas a 8 € por unidad. El pedido se entrega a las 14:30,
+con un importe total de 16 € y un tiempo de entrega de 30 minutos.
+
+El diagrama muestra únicamente los objetos y enlaces relevantes
+para este escenario.
+
 
 ## 6. Matrices de trazabilidad
 
-- Matriz de trazabilidad entre los elementos del modelo conceptual y los requisitos.
+Las matrices relacionan los requisitos de información y las reglas de
+negocio con los elementos del modelo conceptual del apartado 5.1.
 
-|       | EntidadX   | AsociaciónX  | RestricciónX  | Entidad2 ...   | 
-|:------|:-----------|:-----------|:-----------|:-----------|
-| RI-1  | X          | X          | X          | X          |
-| RI-2  |            | X          |            | X          |
-| RF-1  |            | X          |            | X          |
-| RF-2  | X          |            | X          | X          |
-| RN-1  |            | X          |            |            |
-| RN-2  | X          | X          | X          |            |
-| ...   |            |            |            |            |
+Una X indica que el elemento está relacionado con el requisito.
+No implica que el requisito esté completamente representado.
+Una celda vacía indica que no se señala una correspondencia directa.
+
+**Clases y tipos del modelo**
+
+| Requisito | US | TU | CL | TI | EM | PE | PI | IN | LP | TA | ES | SU | SC | PA |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| R.I.01 | X | X | | | | | | | | | | | | |
+| R.I.02 | X | | X | X | | X | | | | | | | | |
+| R.I.03 | | | | | | | X | X | X | | | | | |
+| R.I.04 | | | X | X | X | X | | | | | | | | |
+| R.I.05 | X | | | X | X | | | | | | | | | |
+| R.I.06 | X | | | X | X | | | | | | | | | |
+| R.I.07 | | | | | | | X | X | | X | | | | |
+| R.I.08 | | | | | | | X | X | | | | | | |
+| R.I.09 | | | X | X | X | X | | | X | | X | | | |
+| R.I.10 | | | | | | X | X | X | X | X | | | | |
+| R.I.11 | | | | | | X | | | | | X | | | |
+| R.I.12 | | | | | | | X | | | X | | | | |
+| R.I.13 | | | | | | X | X | | X | X | | | | X |
+| R.I.14 | | | X | | | | | | | | | X | X | |
+| R.N.01 | | | X | | | | | | | | | | | |
+| R.N.02 | | | X | | | | X | X | | | | | | |
+| R.N.03 | | | X | | | | | | | | | X | X | |
+| R.N.04 | | | | X | X | | | | | | | | | |
+| R.N.05 | | | | X | X | | | | | | | | | |
+| R.N.06 | | | | | X | | | | | | | | | |
+| R.N.07 | | | X | | | X | | | | | | X | X | |
+
+**Leyenda**
+
+- US: Usuario.
+- TU: Tipo de Usuario.
+- CL: Cliente.
+- TI: Tienda.
+- EM: Empleado.
+- PE: Pedido.
+- PI: Pizza.
+- IN: Ingredientes.
+- LP: linea pedido.
+- TA: Tamaño pizza.
+- ES: estado.
+- SU: Suscripcion.
+- SC: suscripcion cliente.
+- PA: precio anterior.
+
+**Asociaciones y restricciones representadas**
+
+| Requisito | A1 | A2 | A3 | A4 | A5 | A6 | A7 | A8 | A9 | A10 | C1 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| R.I.01 | | | | | | | | | | | |
+| R.I.02 | X | X | | | | | | | | | |
+| R.I.03 | | | | | | X | | | | | |
+| R.I.04 | X | | X | X | | | | | | | X |
+| R.I.05 | | | X | | | | | | | | |
+| R.I.06 | | | X | X | | | | | | | X |
+| R.I.07 | | | | | | X | | | X | | |
+| R.I.08 | | | | | | X | | | | | |
+| R.I.09 | | X | | | X | | | | | X | |
+| R.I.10 | | | | | X | | | | X | | |
+| R.I.11 | | | | | | | | | | X | |
+| R.I.12 | | | | | | | | | X | | |
+| R.I.13 | | | | | X | | | | X | | |
+| R.I.14 | | | | | | | | X | | | |
+| R.N.01 | | | | | | | | | | | |
+| R.N.02 | | | | | | X | X | | | | |
+| R.N.03 | | | | | | | | X | | | |
+| R.N.04 | | | X | X | | | | | | | X |
+| R.N.05 | | | X | | | | | | | | X |
+| R.N.06 | | | | | | | | | | | |
+| R.N.07 | | X | | | | | | X | | | |
+
+**Leyenda**
+
+- A1: asociación Cliente–Tienda.
+- A2: asociación Cliente–Pedido.
+- A3: asociación Empleado–Tienda.
+- A4: asociación recursiva de Empleado con el rol Jefe.
+- A5: asociación Pizza–Pedido, con «linea pedido» interpretada como clase de asociación.
+- A6: asociación Pizza–Ingredientes.
+- A7: asociación Cliente–Ingredientes, «tiene alergia a».
+- A8: asociación Cliente–Suscripcion.
+- A9: vinculación Pizza–Tamaño pizza.
+- A10: vinculación Pedido–estado.
+- C1: nota del modelo que establece diez empleados por tienda: un jefe, tres cocineros, tres repartidores y tres camareros.
+
+**Observaciones sobre la cobertura**
+
+- Las matrices reflejan correspondencias con el modelo actual; no certifican que todos los requisitos estén completos.
+- R.I.02 y R.N.01: falta representar explícitamente el DNI del cliente y su unicidad.
+- R.I.03: la asociación Pizza–Ingredientes permite conocer la composición, pero falta representar los ingredientes retirados de cada línea.
+- R.I.04: deben completarse los datos de Tienda y resolverse la contradicción sobre la unicidad del código postal.
+- R.I.05, R.I.06 y R.N.04–R.N.06: deben concretarse las categorías profesionales y sus restricciones. C1 recoge la composición de la plantilla en una nota, pero no sustituye su formalización.
+- R.I.08: falta representar los alérgenos asociados a los ingredientes.
+- R.I.09: deben aclararse la conexión Pedido–Tienda y las asignaciones de empleados, y completarse el tipo y los datos de entrega.
+- R.I.10: deben precisarse la identificación de las líneas, el significado de su precio y las restricciones de cantidad e importe.
+- R.I.11: el modelo muestra «entregado» y «no entregado»; faltan los otros estados definidos en los requisitos.
+- R.I.12 y R.I.13: debe aclararse la representación de precios por pizza y tamaño, así como las modificaciones temporales.
+- R.I.14 y R.N.03: debe aclararse la conexión de «suscripcion cliente» con la contratación y expresarse la prohibición de solapamiento entre periodos.
+- R.N.02: la asociación «tiene alergia a» contradice los requisitos que excluyen almacenar las alergias del cliente.
+- R.N.07: las asociaciones permiten relacionar clientes, pedidos y suscripciones, pero no expresan por sí solas la prioridad de preparación y reparto.
 
 -- fin entregable 2 --
-
 ## 7. Modelo relacional en 3FN
 
 - Relaciones obtenidas al aplicar la transformación del modelo conceptual.
