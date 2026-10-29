@@ -27,52 +27,6 @@ La función del administrador es controlar cada cuenta de usuario, sea empleado 
 
 ## 2. Glosario de términos
 
-A continuación se definen, por orden alfabético, los principales términos relacionados con el sistema.
-
-**Administrador:** Usuario encargado de gestionar las cuentas de usuario del sistema y sus perfiles de acceso. Su función es distinta de la del jefe de tienda.
-
-**Alérgeno:** Sustancia presente en un ingrediente que puede provocar una reacción alérgica. El sistema permite consultar los alérgenos asociados a los ingredientes, pero no registra las alergias de los clientes.
-
-**Camarero:** Empleado que registra los pedidos para consumo en tienda y atiende su servicio.
-
-**Cliente:** Usuario registrado que puede realizar pedidos en línea. Las personas que consumen en tienda no necesitan registrarse y sus pedidos no se vinculan a un cliente del sistema.
-
-**Cocinero:** Empleado encargado de preparar las pizzas de los pedidos de su tienda, teniendo en cuenta sus tamaños, cantidades e ingredientes que se solicite retirar.
-
-**Empleado:** Usuario que trabaja en una única tienda y pertenece a una de estas categorías: jefe de tienda, cocinero, repartidor o camarero.
-
-**Estado del pedido:** Situación actual de un pedido: «en preparación», «en reparto», «entregado» o «no entregado». El estado «en reparto» solo se aplica a pedidos en línea. En los pedidos para consumo en tienda, «entregado» significa que se han servido.
-
-**Ingrediente:** Componente utilizado para elaborar las pizzas del catálogo.
-
-**Ingrediente retirado:** Ingrediente de la composición base de una pizza que se solicita excluir de una línea de pedido. Su retirada no modifica la pizza del catálogo.
-
-**Jefe de tienda:** Empleado responsable de dirigir una tienda y supervisar a sus trabajadores. Cada tienda tiene un único jefe y cada jefe pertenece a una única tienda.
-
-**Línea de pedido:** Parte de un pedido que identifica una pizza, su tamaño, cantidad, precio unitario aplicado y los ingredientes que se solicita retirar. Todas las unidades de una misma línea comparten pizza, tamaño, precio unitario e ingredientes retirados.
-
-**Pedido:** Solicitud de compra asociada a una tienda y formada por una o varias líneas. Los pedidos en línea están asociados a un cliente registrado; los pedidos para consumo en tienda son registrados por un camarero y no se asocian a un cliente registrado.
-
-**Pizza:** Producto elaborado por la pizzería, compuesto por una masa y un conjunto de ingredientes.
-
-**Precio base:** Precio habitual de una combinación de pizza y tamaño, que se conserva cuando se aplica una modificación temporal.
-
-**Precio vigente:** Precio de una combinación de pizza y tamaño que se aplica al registrar una línea de pedido. Puede coincidir con el precio base o corresponder a una modificación temporal.
-
-**Repartidor:** Empleado encargado de transportar y entregar los pedidos a domicilio.
-
-**Suscripción:** Servicio contratado por un cliente que otorga prioridad en la preparación y el reparto de sus pedidos. Existe un único tipo de suscripción y cada cliente puede tener como máximo una activa.
-
-**Tamaño:** Opción de venta de una pizza: pequeña, mediana o grande.
-
-**Tiempo total de entrega:** Tiempo transcurrido entre la realización de un pedido en línea y su entrega efectiva. No se calcula para pedidos sin entrega efectiva ni para pedidos de consumo en tienda.
-
-**Tienda:** Establecimiento físico de la empresa donde trabajan los empleados y se preparan y gestionan los pedidos. Cada tienda tiene una dirección exacta, un código postal y una plantilla formada por un jefe, tres cocineros, tres repartidores y tres camareros.
-
-**Tipo de pedido:** Modalidad de un pedido: en línea con entrega a domicilio o para consumo en tienda.
-
-**Usuario:** Persona con credenciales de acceso al sistema y un perfil de administrador, empleado o cliente.
-
 ## 3. Visión general del sistema
       
 ### 3.1. Requisitos generales
