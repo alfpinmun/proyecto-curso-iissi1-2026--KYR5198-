@@ -502,32 +502,32 @@ Una celda vacía indica que no se señala una correspondencia directa.
 
 **Asociaciones y restricciones representadas**
 
-| Requisito | A1 | A2 | A3 | A4 | A5 | A6 | A7 | A8 | A9 | A10 | C1 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| R.I.01 | | | | | | | | | | | |
-| R.I.02 | X | X | | | | | | | | | |
-| R.I.03 | | | | | | X | | | | | |
-| R.I.04 | X | | X | X | | | | | | | X |
-| R.I.05 | | | X | | | | | | | | |
-| R.I.06 | | | X | X | | | | | | | X |
-| R.I.07 | | | | | | X | | | X | | |
-| R.I.08 | | | | | | X | | | | | |
-| R.I.09 | | X | | | X | | | | | X | |
-| R.I.10 | | | | | X | | | | X | | |
-| R.I.11 | | | | | | | | | | X | |
-| R.I.12 | | | | | | | | | X | | |
-| R.I.13 | | | | | X | | | | X | | |
-| R.I.14 | | | | | | | | X | | | |
-| R.N.01 | | | | | | | | | | | |
-| R.N.02 | | | | | | X | X | | | | |
-| R.N.03 | | | | | | | | X | | | |
-| R.N.04 | | | X | X | | | | | | | X |
-| R.N.05 | | | X | | | | | | | | X |
-| R.N.06 | | | | | | | | | | | |
-| R.N.07 | | X | | | | | | X | | | |
+| Requisito | A0 | A1 | A2 | A3 | A4 | A5 | A6 | A7 | A8 | A9 | A10 | C1 |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| R.I.01 | X | | | | | | | | | | | |
+| R.I.02 | | X | X | | | | | | | | | |
+| R.I.03 | | | | | | | X | | | | | |
+| R.I.04 | | X | | X | X | | | | | | | X |
+| R.I.05 | | | | X | | | | | | | | |
+| R.I.06 | | | | X | X | | | | | | | X |
+| R.I.07 | | | | | | | X | | | X | | |
+| R.I.08 | | | | | | | X | | | | | |
+| R.I.09 | | | X | | | X | | | | | X | |
+| R.I.10 | | | | | | | X | | | | X | | |
+| R.I.11 | | | | | | | | | | | | X | |
+| R.I.12 | | | | | | | | | | | X | | |
+| R.I.13 | | | | | | | X | | | | X | | |
+| R.I.14 | | | | | | | | | | X | | | |
+| R.N.01 | X | | | | | | | | | | |
+| R.N.02 | | | | | | | X | X | | | | |
+| R.N.03 | | | | | | | | | X | | | |
+| R.N.04 | | | | X | X | | | | | | | X |
+| R.N.05 | | | | X | | | | | | | | X |
+| R.N.06 | | | | | | | | | | | | X |
+| R.N.07 | | | X | | | | | | X | | | |
 
 **Leyenda**
-
+- A0: asociación Usuario-Tipo Usuario.
 - A1: asociación Cliente–Tienda.
 - A2: asociación Cliente–Pedido.
 - A3: asociación Empleado–Tienda.
@@ -540,21 +540,7 @@ Una celda vacía indica que no se señala una correspondencia directa.
 - A10: vinculación Pedido–estado.
 - C1: nota del modelo que establece diez empleados por tienda: un jefe, tres cocineros, tres repartidores y tres camareros.
 
-**Observaciones sobre la cobertura**
 
-- Las matrices reflejan correspondencias con el modelo actual; no certifican que todos los requisitos estén completos.
-- R.I.02 y R.N.01: falta representar explícitamente el DNI del cliente y su unicidad.
-- R.I.03: la asociación Pizza–Ingredientes permite conocer la composición, pero falta representar los ingredientes retirados de cada línea.
-- R.I.04: deben completarse los datos de Tienda y resolverse la contradicción sobre la unicidad del código postal.
-- R.I.05, R.I.06 y R.N.04–R.N.06: deben concretarse las categorías profesionales y sus restricciones. C1 recoge la composición de la plantilla en una nota, pero no sustituye su formalización.
-- R.I.08: falta representar los alérgenos asociados a los ingredientes.
-- R.I.09: deben aclararse la conexión Pedido–Tienda y las asignaciones de empleados, y completarse el tipo y los datos de entrega.
-- R.I.10: deben precisarse la identificación de las líneas, el significado de su precio y las restricciones de cantidad e importe.
-- R.I.11: el modelo muestra «entregado» y «no entregado»; faltan los otros estados definidos en los requisitos.
-- R.I.12 y R.I.13: debe aclararse la representación de precios por pizza y tamaño, así como las modificaciones temporales.
-- R.I.14 y R.N.03: debe aclararse la conexión de «suscripcion cliente» con la contratación y expresarse la prohibición de solapamiento entre periodos.
-- R.N.02: la asociación «tiene alergia a» contradice los requisitos que excluyen almacenar las alergias del cliente.
-- R.N.07: las asociaciones permiten relacionar clientes, pedidos y suscripciones, pero no expresan por sí solas la prioridad de preparación y reparto.
 
 -- fin entregable 2 --
 ## 7. Modelo relacional en 3FN
