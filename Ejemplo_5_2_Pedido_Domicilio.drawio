@@ -1,0 +1,56 @@
+<mxfile host="Electron">
+  <diagram id="escenario52" name="5.2 - Pedido entregado">
+    <mxGraphModel dx="1212" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=left;fontSize=24;" value="&lt;b&gt;5.2. Escenario de prueba: pedido a domicilio entregado&lt;/b&gt;" vertex="1">
+          <mxGeometry height="45" width="1080" x="40" y="25" as="geometry" />
+        </mxCell>
+        <mxCell id="description" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=16;" value="Ana, cliente asociada a la tienda Centro (id tienda = 1) e identificada con su DNI, realiza el pedido 101 el 27/10/2026 a las 14:00. Pide dos pizzas Margarita medianas a 8 € por unidad. El pedido se entrega a las 14:30, con un importe total de 16 € y un tiempo de entrega de 30 minutos." vertex="1">
+          <mxGeometry height="80" width="1080" x="40" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="tienda" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=15;fillColor=#ffffff;strokeColor=#334155;" value="&lt;u&gt;&lt;b&gt;centro:Tienda&lt;/b&gt;&lt;/u&gt;&lt;hr&gt;id tienda = 1" vertex="1">
+          <mxGeometry height="85" width="240" x="50" y="200" as="geometry" />
+        </mxCell>
+        <object label="&lt;u&gt;&lt;b&gt;ana:Cliente&lt;/b&gt;&lt;/u&gt;&lt;hr&gt;" id="ana">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=15;fillColor=#ffffff;strokeColor=#334155;" vertex="1">
+            <mxGeometry height="85" width="260" x="450" y="200" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="pedido" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=15;fillColor=#ffffff;strokeColor=#334155;" value="&lt;u&gt;&lt;b&gt;pedido101:Pedido&lt;/b&gt;&lt;/u&gt;&lt;hr&gt;Número = 101&lt;br&gt;Tiempo = 30 min&lt;br&gt;fecha = 27/10/2026 14:00&lt;br&gt;fecha entrega = 27/10/2026 14:30&lt;br&gt;estado = entregado&lt;br&gt;precio = 16 €" vertex="1">
+          <mxGeometry height="220" width="300" x="430" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="pizza" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=15;fillColor=#ffffff;strokeColor=#334155;" value="&lt;u&gt;&lt;b&gt;margaritaMediana:Pizza&lt;/b&gt;&lt;/u&gt;&lt;hr&gt;tamaño = mediano&lt;br&gt;precio = 8 €" vertex="1">
+          <mxGeometry height="110" width="270" x="50" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="linea" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=15;fillColor=#ffffff;strokeColor=#334155;" value="&lt;u&gt;&lt;b&gt;linea1:linea pedido&lt;/b&gt;&lt;/u&gt;&lt;hr&gt;cantidad = 2&lt;br&gt;precio = 8 €" vertex="1">
+          <mxGeometry height="110" width="270" x="50" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="cliente_tienda" edge="1" parent="1" source="ana" style="endArrow=none;html=1;strokeColor=#334155;strokeWidth=2;" target="tienda">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cliente_pedido" edge="1" parent="1" source="ana" style="endArrow=none;html=1;strokeColor=#334155;strokeWidth=2;" target="pedido">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pizza_pedido" edge="1" parent="1" source="pizza" style="endArrow=none;html=1;strokeColor=#334155;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.38636;" target="pedido">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vinculo_linea" edge="1" parent="1" source="linea" style="endArrow=none;html=1;dashed=1;strokeColor=#334155;exitX=1;exitY=0.5;edgeStyle=orthogonalEdgeStyle;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="375" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="checks" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fontSize=15;fillColor=#eff6ff;strokeColor=#93c5fd;container=1;" value="&lt;b&gt;Comprobaciones del escenario&lt;/b&gt;&lt;br&gt;&lt;br&gt;• 2 × 8 € = 16 €.&lt;br&gt;• 14:30 − 14:00 = 30 min.&lt;br&gt;• La entrega es posterior al pedido.&lt;br&gt;• El estado final es entregado.&lt;br&gt;• Ana está vinculada a Centro.&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;•&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Ana está identificada.&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="330" x="780" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=13;" value="&lt;b&gt;Alcance y lectura:&lt;/b&gt; diagrama de objetos parcial; se omiten empleados, ingredientes y suscripciones. «linea pedido» se interpreta como clase de asociación de Pizza–Pedido, según su conector discontinuo en el 5.1. En este ejemplo, su atributo «precio» se interpreta como precio unitario. «Tamaño pizza» y «estado» se leen como dominios de valores. Se conserva la grafía «tamañio» del 5.1. Los nombres de objeto identifican ejemplos; no añaden atributos a las clases." vertex="1">
+          <mxGeometry height="90" width="1080" x="40" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="Sg4iBnLgExAqGtJf-MGq-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="DNI: DNI de Ana" vertex="1">
+          <mxGeometry height="42.5" width="250" x="455" y="242.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
