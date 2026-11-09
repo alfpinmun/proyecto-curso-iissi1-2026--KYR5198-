@@ -32,7 +32,7 @@ CREATE TABLE Cliente (
 	id INT PRIMARY KEY,
 	direccion VARCHAR(100) NOT NULL,
 	codigoPostal VARCHAR(5) NOT NULL,
-	FOREIGN KEY (id) REFERENCES Usuario(id)
+	FOREIGN KEY (id) REFERENCES Usuario(id),
 	CHECK (codigoPostal REGEXP '^[0-9]{5}$')
 );
 
