@@ -545,11 +545,176 @@ Una celda vacía indica que no se señala una correspondencia directa.
 -- fin entregable 2 --
 ## 7. Modelo relacional en 3FN
 
-- Relaciones obtenidas al aplicar la transformación del modelo conceptual.
+### Criterios de transformación de las asociaciones
+
+Las asociaciones de uno a muchos se han representado mediante claves
+ajenas en las relaciones correspondientes al extremo «muchos».
+
+Por ejemplo, Empleado incluye tiendaId para identificar la tienda a la
+que pertenece cada trabajador. Pedido incorpora las claves ajenas que
+identifican al cliente, la tienda responsable, el cocinero y el repartidor.
+
+Las asociaciones de muchos a muchos se han transformado en relaciones
+intermedias:
+
+- PizzaIngrediente relaciona las pizzas con sus ingredientes.
+- Alergia relaciona los clientes con los ingredientes a los que son alérgicos.
+- LineaPedido relaciona los pedidos con las pizzas solicitadas y almacena
+  los atributos propios de esa asociación: cantidad y precioUnit.
+
+En estas relaciones se utiliza una clave primaria compuesta por los
+identificadores de las entidades relacionadas.
+
+### Interpretación de la tienda del empleado y del pedido
+
+El atributo tiendaId de Empleado representa la tienda en la que trabaja
+actualmente el empleado.
+
+El atributo tiendaId de Pedido representa la tienda responsable de ese
+pedido y se conserva como información histórica.
+
+Se permite que un empleado cambie de tienda. Este cambio no modifica la
+tienda de los pedidos que haya preparado o repartido anteriormente.
+Por ello, la tienda actual del empleado puede ser diferente de la tienda
+responsable de un pedido histórico.
+
+Al asignar un cocinero o un repartidor a un pedido, se deberá comprobar
+que pertenece en ese momento a la tienda responsable del pedido.
+Esta comprobación se implementará mediante la lógica correspondiente
+en los scripts de procedimientos o triggers.
+
+### Justificación de la normalización
+
+#### Primera forma normal (1FN)
+
+Las relaciones presentan atributos con valores atómicos y no contienen
+grupos repetitivos ni listas de valores dentro de un mismo campo.
+
+Los ingredientes de las pizzas y las alergias de los clientes se
+representan mediante filas en PizzaIngrediente y Alergia, respectivamente,
+en lugar de almacenarse como listas en Pizza o Cliente.
+
+#### Segunda forma normal (2FN)
+
+Las relaciones están en primera forma normal y sus atributos no clave
+dependen de la totalidad de cada clave candidata, sin dependencias
+parciales.
+
+En LineaPedido, cuya clave primaria es (pedidoId, pizzaId), la cantidad
+y el precio unitario aplicado dependen de la combinación de pedido y
+pizza, y no únicamente de uno de esos identificadores.
+
+PizzaIngrediente y Alergia no contienen atributos ajenos a sus claves
+primarias compuestas.
+
+En TipoPizza, el precio corresponde a la combinación de nombre y tamaño,
+que constituye una clave alternativa, además de disponer de id como
+clave primaria.
+
+#### Tercera forma normal (3FN)
+
+Bajo las reglas de negocio adoptadas, no se identifican dependencias
+funcionales no triviales en las que el determinante no sea una
+superclave y el atributo dependiente no forme parte de una clave
+candidata.
+
+Los datos de los usuarios, tiendas, ingredientes y tipos de pizza se
+almacenan en sus respectivas relaciones. Las demás relaciones los
+referencian mediante claves ajenas, sin repetir sus atributos descriptivos.
+
+En Pedido, tiendaId identifica la tienda responsable de la operación.
+No se considera determinado por cocineroId ni por repartidorId, ya que
+un empleado puede intervenir, en distintos momentos de su trayectoria,
+en pedidos de diferentes tiendas. Su tienda actual no determina la
+tienda de todos sus pedidos históricos.
+
+En LineaPedido, precioUnit representa el precio aplicado en la compra.
+No se obtiene necesariamente del precio actual de Pizza, puesto que
+este puede cambiar después de realizarse el pedido. Por tanto,
+conservar precioUnit permite mantener el importe histórico de la línea
+sin introducir la dependencia pizzaId → precioUnit.
+
+Los atributos precio de TipoPizza y Pizza representan, respectivamente,
+el precio del tipo y tamaño y el precio de la pizza concreta. El modelo
+no establece que ambos deban ser siempre iguales.
+
+El importe de cada línea se obtiene multiplicando cantidad por precioUnit.
+El importe total de un pedido se obtiene sumando los importes de sus líneas.
+Estas cantidades calculadas no se almacenan en las relaciones del
+modelo actual.
 
 ### 7.1.  Justificación de la estrategia de transformación de jerarquías
 
-- si se identificaron jerarquías en el MC.
+En el modelo conceptual se identifican dos jerarquías:
+
+- Usuario se especializa en Cliente y Empleado.
+- Empleado se especializa en Cocinero y Repartidor.
+
+Se ha elegido la estrategia de crear una tabla por cada clase de la
+jerarquía, manteniendo los atributos comunes en la superclase y los
+atributos específicos en las subclases.
+
+#### Jerarquía de Usuario
+
+La tabla Usuario almacena los atributos comunes: id, dni, nombre y
+contrasena.
+
+La tabla Cliente almacena los atributos específicos direccion y
+codigoPostal. Su atributo id es, simultáneamente, clave primaria y
+clave ajena que referencia a Usuario(id).
+
+La tabla Empleado almacena la referencia a la tienda mediante tiendaId.
+Su atributo id también es clave primaria y clave ajena hacia Usuario(id).
+
+De esta forma, cada cliente o empleado comparte el identificador con
+su correspondiente usuario. Sus datos comunes se almacenan una sola
+vez en Usuario.
+
+#### Jerarquía de Empleado
+
+Las clases Cocinero y Repartidor se representan mediante tablas propias.
+En ambas, id es clave primaria y clave ajena que referencia a Empleado(id).
+
+Aunque estas subclases no incorporan atributos adicionales, sus tablas
+permiten identificar la función de cada empleado y establecer referencias
+específicas desde Pedido:
+
+- cocineroId referencia a Cocinero(id).
+- repartidorId referencia a Repartidor(id).
+
+Estas claves ajenas garantizan que el empleado asignado como cocinero
+esté registrado en Cocinero y que el asignado como repartidor esté
+registrado en Repartidor.
+
+#### Justificación de la estrategia elegida
+
+Esta estrategia evita duplicar los atributos comunes de los usuarios
+en las tablas de clientes y empleados. También evita repetir los datos
+de los empleados en las tablas de cocineros y repartidores.
+
+Además, permite representar explícitamente las especializaciones y
+mantener la integridad referencial entre cada subclase y su superclase.
+
+Como contrapartida, consultar toda la información de una subclase
+requiere combinar varias tablas. Por ejemplo, para obtener el nombre
+y la tienda de un cocinero es necesario relacionar Cocinero, Empleado
+y Usuario mediante sus identificadores.
+
+#### Restricciones de las especializaciones
+
+Las claves primarias y ajenas garantizan que cada registro de una
+subclase tenga un registro correspondiente en su superclase y que no
+se repita el identificador dentro de la misma subclase.
+
+Sin embargo, estas claves no impiden que un mismo empleado figure
+simultáneamente en Cocinero y Repartidor. La exclusividad de categoría
+establecida en las reglas de negocio deberá controlarse mediante
+restricciones adicionales en los scripts correspondientes.
+
+Asimismo, las claves ajenas no obligan a que todo registro de una
+superclase tenga un registro en alguna de sus subclases. Si se exige
+que todos los empleados tengan una especialización, deberá garantizarse
+también durante su proceso de alta.
 
 
 ### 8. Matriz de trazabilidad MC/SQL (opcional):
