@@ -85,6 +85,71 @@ BEGIN
     );
 END$$
 
+CREATE FUNCTION fn_total_gastado_cliente(
+    p_clienteId INT,
+    p_fechaDesde DATE,
+    p_fechaHasta DATE
+)
+RETURNS DECIMAL(14,2)
+READS SQL DATA
+BEGIN
+    DECLARE v_total DECIMAL(14,2) DEFAULT 0;
+
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Cliente
+        WHERE id = p_clienteId
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El cliente no existe';
+    END IF;
+
+    IF p_fechaDesde IS NULL
+       OR p_fechaHasta IS NULL
+       OR p_fechaDesde > p_fechaHasta THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El periodo indicado no es valido';
+    END IF;
+
+    SELECT COALESCE(SUM(lp.cantidad * lp.precioUnit), 0)
+    INTO v_total
+    FROM Pedido AS p
+    INNER JOIN LineaPedido AS lp
+        ON lp.pedidoId = p.id
+    WHERE p.clienteId = p_clienteId
+      AND p.estado = 'entregado'
+      AND DATE(p.fechaEntrega)
+          BETWEEN p_fechaDesde AND p_fechaHasta;
+
+    RETURN v_total;
+END$$
+
+CREATE FUNCTION fn_minutos_preparacion(p_pedidoId INT)
+RETURNS INT
+READS SQL DATA
+BEGIN
+    DECLARE v_minutos INT DEFAULT NULL;
+
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Pedido
+        WHERE id = p_pedidoId
+    ) THEN
+        RETURN NULL;
+    END IF;
+
+    SELECT TIMESTAMPDIFF(
+        MINUTE,
+        fechaInicio,
+        fechaFinPreparacion
+    )
+    INTO v_minutos
+    FROM Pedido
+    WHERE id = p_pedidoId;
+
+    RETURN v_minutos;
+END$$
+
 CREATE PROCEDURE sp_crear_pedido_con_linea(
     IN p_clienteId INT,
     IN p_tiendaId INT,
@@ -380,8 +445,131 @@ BEGIN
     COMMIT;
 END$$
 
-DELIMITER ;
+CREATE PROCEDURE sp_cambiar_cantidad_linea(
+    IN p_pedidoId INT,
+    IN p_pizzaId INT,
+    IN p_nuevaCantidad INT
+)
+MODIFIES SQL DATA
+BEGIN
+    DECLARE v_estado VARCHAR(20) DEFAULT NULL;
+    DECLARE v_clienteId INT DEFAULT NULL;
+    DECLARE v_cantidadActual INT DEFAULT NULL;
 
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        RESIGNAL;
+    END;
+
+    START TRANSACTION;
+
+    IF p_nuevaCantidad IS NULL OR p_nuevaCantidad <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'La nueva cantidad debe ser mayor que cero';
+    END IF;
+
+    SELECT estado, clienteId
+    INTO v_estado, v_clienteId
+    FROM Pedido
+    WHERE id = p_pedidoId
+    FOR UPDATE;
+
+    IF v_estado IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El pedido no existe';
+    END IF;
+
+    IF v_estado <> 'enPreparacion' THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Solo se puede cambiar la cantidad en preparacion';
+    END IF;
+
+    SELECT cantidad
+    INTO v_cantidadActual
+    FROM LineaPedido
+    WHERE pedidoId = p_pedidoId
+      AND pizzaId = p_pizzaId
+    FOR UPDATE;
+
+    IF v_cantidadActual IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'La linea del pedido no existe';
+    END IF;
+
+    IF fn_pizza_incompatible(v_clienteId, p_pizzaId) THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'La pizza contiene ingredientes incompatibles';
+    END IF;
+
+    UPDATE LineaPedido
+    SET cantidad = p_nuevaCantidad
+    WHERE pedidoId = p_pedidoId
+      AND pizzaId = p_pizzaId;
+
+    COMMIT;
+END$$
+
+CREATE PROCEDURE sp_reasignar_repartidor(
+    IN p_pedidoId INT,
+    IN p_nuevoRepartidorId INT
+)
+MODIFIES SQL DATA
+BEGIN
+    DECLARE v_estado VARCHAR(20) DEFAULT NULL;
+    DECLARE v_tiendaPedido INT DEFAULT NULL;
+    DECLARE v_tiendaRepartidor INT DEFAULT NULL;
+
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+        RESIGNAL;
+    END;
+
+    START TRANSACTION;
+
+    SELECT estado, tiendaId
+    INTO v_estado, v_tiendaPedido
+    FROM Pedido
+    WHERE id = p_pedidoId
+    FOR UPDATE;
+
+    IF v_estado IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El pedido no existe';
+    END IF;
+
+    IF v_estado NOT IN ('enPreparacion', 'enReparto') THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El estado del pedido no permite reasignarlo';
+    END IF;
+
+    SELECT e.tiendaId
+    INTO v_tiendaRepartidor
+    FROM Empleado AS e
+    INNER JOIN Repartidor AS r
+        ON r.id = e.id
+    WHERE r.id = p_nuevoRepartidorId
+    FOR UPDATE;
+
+    IF v_tiendaRepartidor IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El repartidor no existe';
+    END IF;
+
+    IF v_tiendaRepartidor <> v_tiendaPedido THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'El repartidor no pertenece a la tienda del pedido';
+    END IF;
+
+    UPDATE Pedido
+    SET repartidorId = p_nuevoRepartidorId
+    WHERE id = p_pedidoId;
+
+    COMMIT;
+END$$
+
+DELIMITER ;
 
 -- =====================================================
 -- EJEMPLOS DE USO
