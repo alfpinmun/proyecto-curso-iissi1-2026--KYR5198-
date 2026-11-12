@@ -409,9 +409,6 @@ En cada tienda es obligatorio e independiente de las otras tiendas tener: 1 jefe
 ##### R.N.06. Una categoría 
 Dentro del sistema cada empleado solo puede tener una categoría; si soy jefe no puedo ser cocinero, si soy camarero no puedo ser repartidor y así respectivamente con cada uno.
 
-#### R.N.07. Priorización de pedidos de clientes suscritos
-Los pedidos realizados por clientes con una suscripción activa tendrán prioridad frente a los pedidos de clientes no suscritos que aún no hayan comenzado a prepararse, tanto en la preparación como en la asignación para el reparto.
-
 ### 4.2. Mapa de historias de usuario (opcional)
 
 ### 4.3. Requisitos no funcionales (opcional)
