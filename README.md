@@ -424,9 +424,9 @@ para [razón]
 
 ### 5.1. Diagramas de clases UML
 
-![Modelo conceptual](modeladoConceptual_v2.svg)
+![Modelo conceptual](Modelado_Conceptual_v2.svg)
 
-[Archivo editable del modelo: se necesita abrir con draw.io](modeladoConceptual_v2.pdf)
+[Archivo editable del modelo: se necesita abrir con draw.io](Modelado_Conceptual_v2.pdf)
 
 ### 5.2. Escenarios de prueba
 
